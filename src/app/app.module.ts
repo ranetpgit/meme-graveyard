@@ -6,12 +6,14 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MemeFeedComponent } from './meme-feed/meme-feed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    MemeFeedComponent
   ],
   imports: [
     BrowserModule,

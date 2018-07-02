@@ -1,5 +1,7 @@
-import {NgModule, Optional, SkipSelf} from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
+import { MemeStore } from './meme.store';
+import { MemeService } from './meme.service';
 
 
 @NgModule({
@@ -8,6 +10,8 @@ import { SharedModule } from '../shared/shared.module';
     ],
     declarations: [],
     providers: [
+        MemeStore,
+        MemeService,
 
     ]
 })
