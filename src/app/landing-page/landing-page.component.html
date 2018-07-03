@@ -1,3 +1,15 @@
-<p>
-  landing-page works!
-</p>
+<h1 class="text-center">Here are our top memes everybody</h1>
+<div class="container">
+  <div class="row display-flex">
+    <div class="col-md-3" *ngFor="let meme of memes">
+        <div class="thumbnail text-center">
+          <a href="" target="_blank">
+            <img src="{{meme.image}}" class="img-thumbnail" alt="{{meme.name}}" style="width:auto">
+            <div class="caption">
+              <p>{{meme.name}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+  </div>
+</div>

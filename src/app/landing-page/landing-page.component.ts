@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Meme } from '../meme';
+import { MemeService } from '../meme.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
+  memes: Meme[] = [];
 
-  constructor() { }
+  constructor(private memeService: MemeService) { }
 
   ngOnInit() {
+    this.getMemes();
+  }
+
+  getMemes(): void {
+    this.memeService.getMemes()
+      .subscribe(memes => this.memes = memes.slice(1, 5));
   }
 
 }
