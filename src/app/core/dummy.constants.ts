@@ -13,7 +13,15 @@ export class DummyConstants {
         downvotes: 1,
     }),
      _.create((Meme.prototype), {
-        id:2,
+        id:3,
+        name: 'sadsafsafsa',
+        date: '2016.05.03',
+        categories: [AppConstants.CATEGORIES.BORING, AppConstants.CATEGORIES.RETARDED, AppConstants.CATEGORIES.SAD],
+        upvotes: 2155,
+        downvotes: 233,
+    }),
+    _.create((Meme.prototype), {
+        id:4,
         name: 'xD',
         date: '2016.05.03',
         categories: [AppConstants.CATEGORIES.BORING, AppConstants.CATEGORIES.RETARDED, AppConstants.CATEGORIES.SAD],
@@ -21,7 +29,7 @@ export class DummyConstants {
         downvotes: 233,
     }),
    _.create((Meme.prototype), {
-        id:3,
+        id:5,
         name: 'kys',
         date: '2018.05.03',
         categories: [AppConstants.CATEGORIES.BORING, AppConstants.CATEGORIES.FUNNY, AppConstants.CATEGORIES.SAD],
@@ -29,7 +37,7 @@ export class DummyConstants {
         downvotes: 1,
     }),
     _.create((Meme.prototype), {
-        id:4,
+        id:6,
         name: 'normies',
         date: '2017.06.03',
         categories: [AppConstants.CATEGORIES.BORING, AppConstants.CATEGORIES.SEXISM, AppConstants.CATEGORIES.SAD],
@@ -37,7 +45,7 @@ export class DummyConstants {
         downvotes: 23331,
     }),
     _.create((Meme.prototype), {
-        id:5,
+        id:7,
         name: 'Internet Explorer',
         date: '2017.02.03',
         categories: [AppConstants.CATEGORIES.BORING, AppConstants.CATEGORIES.FUNNY, AppConstants.CATEGORIES.SAD],

@@ -1,9 +1,9 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
+import { MemeFeedComponent } from './meme-feed/meme-feed.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -11,10 +11,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         ReactiveFormsModule,
     ],
     declarations: [
+        MemeFeedComponent
 
     ],
     exports: [
         ReactiveFormsModule,
+        MemeFeedComponent,
         FormsModule,
         CommonModule
     ],

@@ -1,0 +1,22 @@
+<div class="wrapper-div">
+  <div *ngFor="let meme of memes">
+
+      <div *ngIf="checkDate(meme?.date | date:'y MMMM')">
+        <a href="#">{{meme.date | date:'y MMMM'}}</a>
+      </div>
+    <div class="wrapper-meme">
+      <img src="https://i.imgur.com/4HD7XYE.png" alt="Smiley face" class="img-thumbnail">
+      <div>
+        <p>{{meme.name}}</p>
+        <!--Temporary AF XD-->
+        <p>{{meme.date}}</p>
+        <p>{{meme.categories}}</p>
+        <p>{{meme.upvotes}}</p>
+        <p>{{meme.downvotes}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div *ngFor="let month of months">
+  <a href="#">{{month | date:'y MMMM'}}</a>
+</div>-->

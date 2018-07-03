@@ -18,7 +18,8 @@ export class MemeStore {
 
     private loadMeme() {
         this.memeService.getAll().pipe(first()).subscribe(
-            res => this._meme.next(res),
+            res => {this._meme.next(res)
+                console.log('Store Requesting MemeService Data');},
             err => {
                 console.log('Error retrieving products', err);
                 // let errObj: any = err.json();
