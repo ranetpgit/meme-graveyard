@@ -1,15 +1,30 @@
-<h1 class="text-center">Here are our top memes everybody</h1>
+<h1 class="text-center">MEME OF THE DAY</h1>
 <div class="container">
-  <div class="row display-flex">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <img src="{{memeOfTheDay.image}}" class="img-thumbnail" alt="{{memeOfTheDay.name}}" style="width:auto">
+    </div>
+    <div class="col-md-4">
+      <ul>
+        <li>{{memeOfTheDay.name}}</li>
+        <li>{{memeOfTheDay.born}} - {{memeOfTheDay.died}}</li>
+      </ul>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
+<h1 class="text-center">Currently thriving memes</h1>
+  <div class="row">
     <div class="col-md-3" *ngFor="let meme of memes">
-        <div class="thumbnail text-center">
-          <a href="" target="_blank">
-            <img src="{{meme.image}}" class="img-thumbnail" alt="{{meme.name}}" style="width:auto">
-            <div class="caption">
-              <p>{{meme.name}}</p>
-            </div>
-          </a>
-        </div>
+      <div class="thumbnail text-center">
+        <a href="" target="_blank">
+          <img src="{{meme.image}}" class="img-thumbnail" alt="{{meme.name}}" style="width:auto">
+          <div class="caption">
+            <p>{{meme.name}}</p>
+          </div>
+        </a>
       </div>
+    </div>
   </div>
 </div>

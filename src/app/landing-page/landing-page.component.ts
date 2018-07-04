@@ -9,6 +9,7 @@ import { MemeService } from '../meme.service';
 })
 export class LandingPageComponent implements OnInit {
   memes: Meme[] = [];
+  memeOfTheDay: Meme;
 
   constructor(private memeService: MemeService) { }
 
@@ -19,6 +20,9 @@ export class LandingPageComponent implements OnInit {
   getMemes(): void {
     this.memeService.getMemes()
       .subscribe(memes => this.memes = memes.slice(1, 5));
+
+    this.memeService.getMemeOfTheDay()
+      .subscribe(memeOfTheDay => this.memeOfTheDay = memeOfTheDay);
   }
 
 }

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Meme } from './meme';
+import { memesOfTheDay } from './mock-memes';
 import { MessageService } from './message.service';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+
 
 // import { MEMES } from './mock-memes';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -37,6 +39,16 @@ export class MemeService {
       tap(_ => this.log(`fetched meme id=${id}`)),
       catchError(this.handleError<Meme>(`getMeme id=${id}`))
     );
+  }
+
+  getMemesOfTheDay(): Observable<Meme[]> {
+    this.messageService.add('MemeService: fetched memes of the day');
+    return of(memesOfTheDay);
+  }
+
+  getMemeOfTheDay(): Observable<Meme> {
+    this.messageService.add('MemeService: fetched the meme of the day');
+    return of(memesOfTheDay[0]); // temp, just get the latest value
   }
 
   /** POST: add a new meme to the server */

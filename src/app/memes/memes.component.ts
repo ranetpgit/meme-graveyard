@@ -9,6 +9,8 @@ import { MemeService } from '../meme.service';
 })
 export class MemesComponent implements OnInit {
   memes: Meme[];
+  memesOfTheDay: Meme[];
+  memeOfTheDay: Meme;
 
   constructor(private memeService: MemeService) { }
 
@@ -16,8 +18,17 @@ export class MemesComponent implements OnInit {
    this.memeService.getMemes().subscribe(memes => this.memes = memes);
   }
 
+  getMemesOfTheDay(): void {
+    this.memeService.getMemesOfTheDay().subscribe(memesOfTheDay => this.memesOfTheDay = memesOfTheDay);
+  }
+  getMemeOfTheDay(): void {
+    this.memeService.getMemeOfTheDay().subscribe(memeOfTheDay => this.memeOfTheDay = memeOfTheDay);
+  }
+
   ngOnInit() {
     this.getMemes();
+    this.getMemesOfTheDay();
+    this.getMemeOfTheDay();
   }
 
   add(name: string, born: string, died: string, description: string, image: string): void {

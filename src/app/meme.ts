@@ -4,5 +4,6 @@ export class Meme {
     born: string;
     died: string;
     description: string;
+    tags: string[];
     image: string;
 }
