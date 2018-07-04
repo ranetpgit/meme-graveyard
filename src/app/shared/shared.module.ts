@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { LoginModalComponent } from './modals/login-modal/login-modal.component';
+import { EmailValidatorDirective } from './directives/email-validator.directive';
 
 
 @NgModule({
     imports: [
         CommonModule,
+        ReactiveFormsModule ,
         FormsModule,
-        ReactiveFormsModule,
-        ModalModule.forRoot(),
+        NgbModule,
     ],
     declarations: [
-        LoginModalComponent
+        LoginModalComponent,
+        EmailValidatorDirective,
     ],
     exports: [
-        ReactiveFormsModule,
+        EmailValidatorDirective,
         LoginModalComponent,
+        ReactiveFormsModule ,
         FormsModule,
-        ModalModule,
         CommonModule
     ],
     providers: [],

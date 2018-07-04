@@ -1,6 +1,9 @@
-import { Component, TemplateRef } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Component, Input } from '@angular/core';
+import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { UserService } from '../../../core/user.service';
+import { Subscription } from 'rxjs';
+import { UserStore } from '../../../core/user.store';
 
 @Component({
   selector: 'app-login-modal',
@@ -8,6 +11,31 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent {
-  
 
+  @Input() id: number;
+  myForm: FormGroup;
+  username: string = "";
+  password: string = "";
+  subscription: Subscription;
+  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder, private userStore: UserStore) {
+    this.createForm();
+  }
+ /* ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }*/
+  private createForm() {
+    this.myForm = this.formBuilder.group({
+      username: '',
+      password: ''
+    });
+  }
+
+  private submitForm() {
+    console.log(this.username);
+    console.log(this.password);
+    this.userStore.authenticate(this.username, this.password);
+    this.activeModal.close(this.myForm.value);
+  }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserStore } from '../core/user.store';
 import { UserAccount } from '../shared/types/user-account';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { LoginModalComponent } from '../shared/modals/login-modal/login-modal.component';
+import { ModalHandlerService } from '../core/modal-handler.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -10,17 +10,23 @@ import { LoginModalComponent } from '../shared/modals/login-modal/login-modal.co
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(private userStore: UserStore, private modalService: BsModalService) { }
+  subscription: Subscription;
+  constructor(private userStore: UserStore, private modaHandlerService: ModalHandlerService) { }
   public loggedInUser: UserAccount = undefined;
-  bsModalRef: BsModalRef;
+
+  ngOnDestroy() {
+    if (this.subscription) {
+        this.subscription.unsubscribe();
+    }
+  }
+
 
   ngOnInit() {
     this.subscribeLoggedInUser();
   }
 
   subscribeLoggedInUser() {
-    this.userStore.currentUser().subscribe((res) => {
+    this.subscription = this.userStore.currentUser().subscribe((res) => {
       if (typeof res.email !== 'undefined') {
         this.loggedInUser = res;
       } else {
@@ -30,8 +36,8 @@ export class NavbarComponent implements OnInit {
   }
 
   onSignInButtonClick() {
-    this.userStore.authenticate('cars723804@mail.ee', 'kfc');
-    this.bsModalRef = this.modalService.show(LoginModalComponent);
+    // this.userStore.authenticate('cars723804@mail.ee', 'kfc');
+    this.modaHandlerService.openLoginModal();
   }
-  
+
 }
