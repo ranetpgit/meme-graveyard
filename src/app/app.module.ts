@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MemesComponent } from './memes/memes.component';
 import { MemeDetailComponent } from './meme-detail/meme-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MessagesComponent } from './messages/messages.component';
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
