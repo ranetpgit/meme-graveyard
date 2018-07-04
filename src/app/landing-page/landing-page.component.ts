@@ -8,7 +8,8 @@ import { MemeService } from '../meme.service';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  memes: Meme[] = [];
+  thrivingMemes: Meme[];
+  deadMemes: Meme[];
   memeOfTheDay: Meme;
 
   constructor(private memeService: MemeService) { }
@@ -19,7 +20,9 @@ export class LandingPageComponent implements OnInit {
 
   getMemes(): void {
     this.memeService.getMemes()
-      .subscribe(memes => this.memes = memes.slice(1, 5));
+      .subscribe(memes => {
+        this.thrivingMemes = memes.slice(1, 5);
+        this.deadMemes = memes.slice(5, 9) });
 
     this.memeService.getMemeOfTheDay()
       .subscribe(memeOfTheDay => this.memeOfTheDay = memeOfTheDay);

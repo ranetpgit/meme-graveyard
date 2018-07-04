@@ -3,23 +3,42 @@
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-4">
-      <img src="{{memeOfTheDay.image}}" class="img-thumbnail" alt="{{memeOfTheDay.name}}" style="width:auto">
+      <div class="memeodayWrapper">
+      <img src="{{memeOfTheDay.image}}" class=" memeodayImg" alt="{{memeOfTheDay.name}}">
+    </div>
     </div>
     <div class="col-md-4">
-      <ul>
-        <li>{{memeOfTheDay.name}}</li>
-        <li>{{memeOfTheDay.born}} - {{memeOfTheDay.died}}</li>
-      </ul>
+      <!-- <ul> -->
+        <h4>{{memeOfTheDay.name | uppercase }}</h4>
+        <b>{{memeOfTheDay.born}} - {{memeOfTheDay.died}}</b>
+        <p>{{memeOfTheDay.description}}</p>
+      <!-- </ul> -->
     </div>
     <div class="col-md-2"></div>
   </div>
-
-<h1 class="text-center">Currently thriving memes</h1>
+<div class="memeRowHeader">
+  <h2 class="text-center">Currently thriving memes</h2>
+</div>
   <div class="row">
-    <div class="col-md-3" *ngFor="let meme of memes">
+    <div class="col-md-3 memeCol" *ngFor="let meme of thrivingMemes">
       <div class="thumbnail text-center">
         <a href="" target="_blank">
-          <img src="{{meme.image}}" class="img-thumbnail" alt="{{meme.name}}" style="width:auto">
+          <img src="{{meme.image}}" class="img-thumbnail memeImg" alt="{{meme.name}}">
+          <div class="caption">
+            <p>{{meme.name}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="memeRowHeader">
+  <h2 class="text-center">Dead memes</h2>
+</div>
+  <div class="row">
+    <div class="col-md-3 memeCol" *ngFor="let meme of deadMemes">
+      <div class="thumbnail text-center">
+        <a href="" target="_blank">
+          <img src="{{meme.image}}" class="img-thumbnail memeImg" alt="{{meme.name}}">
           <div class="caption">
             <p>{{meme.name}}</p>
           </div>
