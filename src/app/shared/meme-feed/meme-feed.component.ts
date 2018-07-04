@@ -11,7 +11,7 @@ import { MemeStore } from '../../core/meme.store';
 export class MemeFeedComponent implements OnInit {
   dividers: string[] = [];
   memes: Meme[];
-  createDivider:boolean;
+  createDivider: boolean;
   //dont need store rn but maybe in the future, when you want to interact with the meme
   constructor(private memeService: MemeService, private memeStore: MemeStore) { }
 
@@ -19,7 +19,7 @@ export class MemeFeedComponent implements OnInit {
     this.getInitialData();
     this.memes.forEach(element => {
       let temp = new Date(element.date);
-      this.addItemToList(temp.getFullYear()+" "+temp.toLocaleString('en-us', {month: 'long'}))
+      this.addItemToList(temp.getFullYear() + " " + temp.toLocaleString('en-us', { month: 'long' }))
     });
   }
 
@@ -30,21 +30,21 @@ export class MemeFeedComponent implements OnInit {
     }
   }*/
 
-  public addItemToList(memeDate:string):boolean{
+  public addItemToList(memeDate: string): boolean {
     console.log(memeDate)
-    if(!this.dividers.includes(memeDate)){
+    if (!this.dividers.includes(memeDate)) {
       this.dividers.push(memeDate);
       return true;
     }
     return false;
   }
 
-  public checkDate(memeDate:string):boolean{
-    if(this.dividers.includes(memeDate)){
-      this.dividers[memeDate] = 'dead';
-      console.log(this.dividers[memeDate])
+  public checkDate(memeDate: string): boolean {
+    if (this.dividers.includes(memeDate)) {
+      this.dividers.splice(this.dividers.indexOf(memeDate, 0), 1);
+      console.log(this.dividers)
       return true;
-    }else{  
+    } else {
       return false;
     }
 
