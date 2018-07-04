@@ -1,5 +1,7 @@
-import {NgModule, Optional, SkipSelf} from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
+import { UserService } from './user.service';
+import { UserStore } from './user.store';
 
 
 @NgModule({
@@ -8,7 +10,8 @@ import { SharedModule } from '../shared/shared.module';
     ],
     declarations: [],
     providers: [
-
+        UserService,
+        UserStore
     ]
 })
 export class CoreModule {
