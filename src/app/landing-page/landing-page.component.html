@@ -1,3 +1,47 @@
-<p>
-  landing-page works!
-</p>
+<h1 class="text-center">MEME OF THE DAY</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <div class="memeodayWrapper">
+        <img src="{{memeOfTheDay.image}}" class=" memeodayImg" alt="{{memeOfTheDay.name}}">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h4>{{memeOfTheDay.name | uppercase }}</h4>
+      <b>{{memeOfTheDay.born}} - {{memeOfTheDay.died}}</b>
+      <p>{{memeOfTheDay.description}}</p>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="memeRowHeader">
+    <h2 class="text-center">Currently thriving memes</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-3 memeCol" *ngFor="let meme of thrivingMemes">
+      <div class="thumbnail text-center">
+        <a routerLink="/detail/{{meme.id}}">
+          <img src="{{meme.image}}" class="img-thumbnail memeImg" alt="{{meme.name}}">
+          <div class="caption">
+            <p>{{meme.name}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="memeRowHeader">
+    <h2 class="text-center">Dead memes</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-3 memeCol" *ngFor="let meme of deadMemes">
+      <div class="thumbnail text-center">
+        <a routerLink="/detail/{{meme.id}}">
+          <img src="{{meme.image}}" class="img-thumbnail memeImg" alt="{{meme.name}}">
+          <div class="caption">
+            <p>{{meme.name}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

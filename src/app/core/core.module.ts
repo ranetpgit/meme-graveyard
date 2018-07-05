@@ -1,6 +1,6 @@
-import {NgModule, Optional, SkipSelf} from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-
+import { MemeService } from './meme.service';
 
 @NgModule({
     imports: [
@@ -8,7 +8,7 @@ import { SharedModule } from '../shared/shared.module';
     ],
     declarations: [],
     providers: [
-
+        MemeService,
     ]
 })
 export class CoreModule {
