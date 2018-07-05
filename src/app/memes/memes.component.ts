@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Meme } from '../meme';
-import { MemeService } from '../meme.service';
+import { Meme } from '../shared/types//meme';
+import { MemeService } from '../core/meme.service';
 
 @Component({
   selector: 'app-memes',
