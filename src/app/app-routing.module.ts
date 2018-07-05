@@ -4,8 +4,8 @@ import { MemeDetailComponent } from './meme-detail/meme-detail.component';
 import { LandingPageComponent }   from './landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: 'detail/:id', component: MemeDetailComponent },
   { path: '', component: LandingPageComponent },
+  { path: 'detail/:id', component: MemeDetailComponent },
 ];
 
 @NgModule({

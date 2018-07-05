@@ -32,9 +32,4 @@ export class MemeDetailComponent implements OnInit {
   ngOnInit() {
     this.getMeme();
   }
-
-  // save(): void {
-  //   this.memeService.updateMeme(this.meme)
-  //     .subscribe(() => this.goBack());
-  // }
 }
