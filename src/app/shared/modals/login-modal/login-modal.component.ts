@@ -14,8 +14,8 @@ export class LoginModalComponent {
 
   @Input() id: number;
   myForm: FormGroup;
-  username: string = "";
-  password: string = "";
+  username = '';
+  password = '';
   subscription: Subscription;
   constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder, private userStore: UserStore) {
     this.createForm();

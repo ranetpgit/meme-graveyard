@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { LoginModalComponent } from './modals/login-modal/login-modal.component';
 import { EmailValidatorDirective } from './directives/email-validator.directive';
 
@@ -20,7 +20,7 @@ import { EmailValidatorDirective } from './directives/email-validator.directive'
     exports: [
         EmailValidatorDirective,
         LoginModalComponent,
-        ReactiveFormsModule ,
+        ReactiveFormsModule,
         FormsModule,
         CommonModule
     ],

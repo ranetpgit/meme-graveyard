@@ -15,12 +15,11 @@ export class UserService {
     }
 
     authenticate(username: string, password: string): Observable<UserAccount> {
-        let user = this.dummyData.filter(element => element.email === username)[0];
+        const user = this.dummyData.filter(element => element.email === username)[0];
         if (user !== undefined && user.password === password) {
             this.dummyLoggedInUser = user;
             return of(user);
-
-        }else {
+        } else {
             console.log('error false information');
             return of(UserAccount.createEmpty());
         }

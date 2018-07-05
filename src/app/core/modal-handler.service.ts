@@ -1,7 +1,6 @@
-import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
-import { LoginModalComponent } from "../shared/modals/login-modal/login-modal.component";
+import { Injectable } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { LoginModalComponent } from '../shared/modals/login-modal/login-modal.component';
 
 @Injectable()
 export class ModalHandlerService {
@@ -12,7 +11,7 @@ export class ModalHandlerService {
   }
 
   public openLoginModal() {
-    this.modalService.open(LoginModalComponent, { ariaLabelledBy: 'modal-basic-title' })
+    this.modalService.open(LoginModalComponent, { ariaLabelledBy: 'modal-basic-title' });
     /*modal.componentInstance.title = "Dialog";
     modal.componentInstance.body = "Your message";*/
   }
@@ -27,3 +26,4 @@ export class ModalHandlerService {
   }
 
 }
+

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserStore } from '../core/user.store';
 import { UserAccount } from '../shared/types/user-account';
 import { ModalHandlerService } from '../core/modal-handler.service';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   constructor(private userStore: UserStore, private modaHandlerService: ModalHandlerService) { }
   public loggedInUser: UserAccount = undefined;
@@ -27,7 +27,8 @@ export class NavbarComponent implements OnInit {
 
   subscribeLoggedInUser() {
     this.subscription = this.userStore.currentUser().subscribe((res) => {
-      if (typeof res.email !== 'undefined') {
+      if (typeof res !== 'undefined' && typeof res.email !== 'undefined') {
+        console.log(res);
         this.loggedInUser = res;
       } else {
         this.loggedInUser = undefined;
