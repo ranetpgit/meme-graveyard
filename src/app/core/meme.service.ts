@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Meme } from '../shared/types/meme';
 import { DummyConstants } from '../core/dummy-constants';
-import { MessageService } from '../message.service';
+import { MessageService } from '../core/message.service';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
