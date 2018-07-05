@@ -22,7 +22,7 @@ export class LandingPageComponent implements OnInit {
     this.memeService.getMemes()
       .subscribe(memes => {
         this.thrivingMemes = memes.slice(1, 5);
-        this.deadMemes = memes.slice(5, 9) });
+        this.deadMemes = memes.slice(5, 9); });
 
     this.memeService.getMemeOfTheDay()
       .subscribe(memeOfTheDay => this.memeOfTheDay = memeOfTheDay);

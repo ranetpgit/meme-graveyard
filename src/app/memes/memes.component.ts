@@ -31,22 +31,22 @@ export class MemesComponent implements OnInit {
     this.getMemeOfTheDay();
   }
 
-  add(name: string, born: string, died: string, description: string, image: string): void {
-    name = name.trim();
-    born = born.trim();
-    died = died.trim();
-    description = description.trim();
-    image = image.trim();
+  // add(name: string, born: string, died: string, description: string, image: string): void {
+  //   name = name.trim();
+  //   born = born.trim();
+  //   died = died.trim();
+  //   description = description.trim();
+  //   image = image.trim();
 
-    if (!name) { return; }
-    this.memeService.addMeme({ name, born, died, description, image } as Meme)
-      .subscribe(meme => {
-        this.memes.push(meme);
-      });
-  }
+  //   if (!name) { return; }
+  //   this.memeService.addMeme({ name, born, died, description, image } as Meme)
+  //     .subscribe(meme => {
+  //       this.memes.push(meme);
+  //     });
+  // }
 
-  delete(meme: Meme): void {
-    this.memes = this.memes.filter(h => h !== meme);
-    this.memeService.deleteMeme(meme).subscribe();
-  }
+  // delete(meme: Meme): void {
+  //   this.memes = this.memes.filter(h => h !== meme);
+  //   this.memeService.deleteMeme(meme).subscribe();
+  // }
 }
