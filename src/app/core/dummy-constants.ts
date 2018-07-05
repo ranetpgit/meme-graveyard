@@ -1,6 +1,8 @@
-<<<<<<< HEAD
 import { UserAccount } from '../shared/types/user-account';
 import * as _ from 'lodash';
+import { Meme } from '../shared/types/meme';
+import { AppConstants } from '../app.constants';
+
 
 export class DummyConstants {
     static readonly DUMMY_USERACCOUNTS: UserAccount[] = [
@@ -27,12 +29,8 @@ export class DummyConstants {
             password: 'kfc'
         })];
 
-}
-=======
-import { Meme } from '../shared/types/meme';
-import { AppConstants } from '../app.constants';
 
-export class DummyConstants {
+
     static readonly DUMMY_MEMES: Meme[] = [
         { id: 1, name: 'John Cena', born: '2014-12-01', died: '2015-12-01', description: 'And his name is John Cena', tags: [AppConstants.TAGS.CELEBRITY, AppConstants.TAGS.SPORTS], image: 'https://i.imgur.com/Du7RtnV.jpg' },
         { id: 2, name: 'MLG', born: '2013-12-01', died: '2015-12-01', description: 'Montage Parodies', tags: [AppConstants.TAGS.MLG], image: 'https://i.imgur.com/6x3xozV.jpg' },
@@ -52,4 +50,3 @@ export class DummyConstants {
     ];
 }
 
->>>>>>> master
