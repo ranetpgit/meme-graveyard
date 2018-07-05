@@ -6,9 +6,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MemesComponent } from './memes/memes.component';
 import { MemeDetailComponent } from './meme-detail/meme-detail.component';
-import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
@@ -16,9 +14,7 @@ import { AppRoutingModule } from './/app-routing.module';
     AppComponent,
     LandingPageComponent,
     NavbarComponent,
-    MemesComponent,
     MemeDetailComponent,
-    MessagesComponent
   ],
   imports: [
     BrowserModule,
