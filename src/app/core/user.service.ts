@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {of, Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { of, Observable } from 'rxjs';
 import { UserAccount } from '../shared/types/user-account';
 import { DummyConstants } from './dummy-constants';
 
@@ -31,8 +31,6 @@ export class UserService {
 
     getUser(): Observable<UserAccount> {
         return of(this.dummyLoggedInUser);
-        // return Observable.of(this.dummyData.find(member => member. id ===id));
-        // return this.userStore.currentUser()
     }
 
 }

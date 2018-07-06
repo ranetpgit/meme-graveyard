@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
-import {UserService} from './user.service';
-import {UserAccount} from '../shared/types/user-account';
+import { Injectable } from '@angular/core';
+import { UserService } from './user.service';
+import { UserAccount } from '../shared/types/user-account';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserStore {
@@ -18,13 +19,13 @@ export class UserStore {
     }
 
     authenticate(username: string, password: string) {
-        this.userService.authenticate(username, password).subscribe(res => {
-            if (res !== null) {
-                this.userService.getUser().subscribe(reallyLoggedInUser => {
-                    this._selectedUser.next(reallyLoggedInUser);
-                });
+        return this.userService.authenticate(username, password).pipe(map(user => {
+            if (user && !user.isEmpty()) {
+                console.log('USer IS noT EmPTy')
+                this._selectedUser.next(user);
             }
-        });
+            return user;
+        }))
 
     }
 
