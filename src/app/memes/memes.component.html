@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <select class="selectpicker pastPicker">
+          <option class="dropdown-item">Past 24 hours</option>
+          <option class="dropdown-item">Past week</option>
+          <option class="dropdown-item">Past month</option>
+          <option class="dropdown-item">Past 3 months </option>
+          <option class="dropdown-item">Past 6 months </option>
+          <option class="dropdown-item">Past year</option>
+          <option class="dropdown-item">All time</option>
+        </select>
+      </div>
+  </div>
+  <div class="row" *ngFor="let meme of memes">
+    <div class="col-sm-1 voteCol">
+      <div class="midcol unvoted">
+          <button type="button" class="">
+              Up
+          </button>
+        <div class="score">SCORE</div>
+        <button type="button" class="">
+            <span class="glyphicon glyphicon-chevron-down"></span> Down
+        </button>
+      </div>
+    </div>
+    <div class="col-md-2 memeCol">
+      <div class="text-center thumbDiv">
+        <a class="thumbLink" routerLink="/detail/{{meme.id}}">
+          <img src="{{meme.image}}" class="img-fluid memeImg" alt="{{meme.name}}">
+        </a>
+      </div>
+    </div>
+    <div class="col-md-9 detailCol">
+      <ul>
+          <li><a class="titleLink" routerLink="/detail/{{meme.id}}">{{meme.name}}</a></li>
+          <li><p class="date">{{meme.born}} - {{meme.died}}</p></li>
+          <li><p>Submitted by <span><a href="" class="detailLink"> USER </a> </span><span>at DATEADDED to </span> <a href="" class="detailLink"> HUB</a></p></li>
+          <li><a href="" class="detailLink"> link, </a> <a href=""  class="detailLink">to, </a> <a href=""  class="detailLink">tags </a> </li>
+          <li><a class="additionalLink" routerLink="/detail/{{meme.id}}"> NUMCOM comments </a></li>
+      </ul>
+    </div>
+  </div>
+</div>

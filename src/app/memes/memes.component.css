@@ -1,0 +1,50 @@
+.memeCol {
+    padding: 0px;
+}
+.titleLink {
+    font-family: verdana, arial, helvetica, sans-serif;
+    color: dimgrey;
+    font-size: medium;
+    font-weight: normal;
+}
+
+.pastButton {
+    margin: 1em;
+}
+
+.additionalLink {
+    color: dimgrey;
+    font-weight: 450;
+}
+.detailLink {
+    color: #3C79AF;
+    font-weight: 450;
+}
+a:hover {
+    text-decoration: none;
+}
+
+.thumbLink > img {
+    height: 10em;
+    object-fit: contain;
+    object-position: top;
+}
+
+.selectpicker {
+    border: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.date {
+    font-size: 0.9em;
+}
+li {
+    list-style-type: none;
+}
+ul {
+    padding: 0;
+}
+
+p {
+    margin-bottom: 0px;
+}
