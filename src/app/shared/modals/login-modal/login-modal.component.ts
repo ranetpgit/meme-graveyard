@@ -50,6 +50,9 @@ export class LoginModalComponent implements OnDestroy {
         this.showAlert = true;
       }
     });
+    setTimeout(x=>{
+      this.showAlert=false;
+    },3000)
 
   }
 }
