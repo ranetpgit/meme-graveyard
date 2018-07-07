@@ -23,7 +23,7 @@ export class LoginModalComponent extends AbstractFormComponent implements OnDest
   showAlert = false;
   submittedForm = false;
 
-  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder, private userStore: UserStore) {
+  constructor(public activeModal: NgbActiveModal, private userStore: UserStore) {
     super();
   }
 
