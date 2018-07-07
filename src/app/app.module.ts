@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MemeDetailComponent } from './meme-detail/meme-detail.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MemesComponent } from './memes/memes.component';
+import { SidebarModule } from 'ng-sidebar';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MemesComponent } from './memes/memes.component';
     NgbModule.forRoot(),
     CoreModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SidebarModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

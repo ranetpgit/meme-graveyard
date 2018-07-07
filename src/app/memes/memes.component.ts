@@ -10,8 +10,13 @@ import { MemeService } from '../core/meme.service';
 export class MemesComponent implements OnInit {
   memes: Meme[];
   memesOfTheDay: Meme[];
+  private sidebar_opened = true;
 
   constructor(private memeService: MemeService) { }
+
+  private _toggleSidebar() {
+    this.sidebar_opened = !this.sidebar_opened;
+  }
 
   getMemes(): void {
     this.memeService.getMemes().subscribe(memes => this.memes = memes);

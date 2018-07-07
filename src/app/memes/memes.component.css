@@ -1,3 +1,14 @@
+li {
+    list-style-type: none;
+}
+ul {
+    padding: 0;
+}
+
+p {
+    margin-bottom: 0px;
+}
+
 .memeCol {
     padding: 0px;
 }
@@ -38,13 +49,12 @@ a:hover {
 .date {
     font-size: 0.9em;
 }
-li {
-    list-style-type: none;
-}
-ul {
-    padding: 0;
+
+.sidebarContent {
+
 }
 
-p {
-    margin-bottom: 0px;
+>>>.ng-sidebar {
+    background-color: #f9f9f9;
+    padding: 1em;
 }
