@@ -94,6 +94,17 @@ p {
 .memeCol {
     padding: 0px;
 }
+.memeRow {
+    /* border-style: solid;
+    border-color: lightgray; */
+    /* border-top:  */
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0;
+    border-bottom: 1px;
+    border-color: lightgray;
+    border-bottom-style: solid;
+}
 .titleLink {
     font-family: verdana, arial, helvetica, sans-serif;
     color: dimgrey;
