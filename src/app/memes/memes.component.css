@@ -9,6 +9,86 @@ p {
     margin-bottom: 0px;
 }
 
+/* ##### ARROW ICON ##### */
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.right { transform: rotate(-45deg); -webkit-transform: rotate(-45deg); }
+.left { transform: rotate(135deg); -webkit-transform: rotate(135deg); }
+.up { transform: rotate(-135deg); -webkit-transform: rotate(-135deg); }
+.down { transform: rotate(45deg); -webkit-transform: rotate(45deg); }
+
+/* ##### SIDEBAR ##### */
+/* sidebar accordion card */
+>>>.card {
+    /* remove rest of the border, but make bottom 1px */
+    border: 0;
+    border-bottom: 1px;
+    border-radius: 0;
+}
+/* sidebar accordion button */
+>>>.card-header  {
+    padding: 0;
+}
+
+>>>.card-header > h5 > button {
+    color: #212529;
+    font-weight: 500;
+    font-size: 1em;
+}
+>>>.card-header > h5 > button:hover {
+    color: #212529;
+    font-weight: 500;
+    text-decoration: none;
+}
+>>>.card-header > h5 > button:focus {
+    text-decoration: none;
+}
+
+/* ng-sidebar background selection */
+>>>.ng-sidebar {
+    background-color: #f9f9f9;
+    padding: 1em;
+}
+
+.closeSidebar {
+    cursor: pointer;
+}
+.closeSidebar > span {
+    font-size: 1.5em;
+}
+
+.sidebarSearch {
+ outline: 0;
+ border-width: 0 0 1px;
+ border-style: dashed;
+ border-radius: 0;
+ background-color: #fcfcfc;
+ margin-bottom: 0.5em;
+ padding-left: 3px;
+
+}
+.sidebarSearch:focus {
+    box-shadow: none;
+    background-color: white;
+    outline: 0 none;
+}
+
+.sidebarContent {
+
+}
+.toggleSidebar {
+    position: fixed;
+    margin-top: 2vh;
+    padding: 0.5em;
+    background-color: white;
+    outline:none;
+    cursor: pointer;
+}
+/* ##### FEED ITEMS ##### */
 .memeCol {
     padding: 0px;
 }
@@ -50,11 +130,3 @@ a:hover {
     font-size: 0.9em;
 }
 
-.sidebarContent {
-
-}
-
->>>.ng-sidebar {
-    background-color: #f9f9f9;
-    padding: 1em;
-}
