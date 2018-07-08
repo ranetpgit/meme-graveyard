@@ -52,12 +52,13 @@ p {
 >>>.ng-sidebar {
     background-color: #f9f9f9;
     padding: 1em;
+    width: 17em;
 }
 
-.closeSidebar {
+.sidebarX {
     cursor: pointer;
 }
-.closeSidebar > span {
+.sidebarX > span {
     font-size: 1.5em;
 }
 
@@ -77,16 +78,17 @@ p {
     outline: 0 none;
 }
 
-.sidebarContent {
-
+.sidebarCheckbox {
+    cursor: pointer;
 }
-.toggleSidebar {
+.sidebarToggle {
     position: fixed;
     margin-top: 2vh;
     padding: 0.5em;
-    background-color: white;
+    background-color: transparent;
     outline:none;
     cursor: pointer;
+    z-index: 100;
 }
 /* ##### FEED ITEMS ##### */
 .memeCol {
@@ -129,4 +131,3 @@ a:hover {
 .date {
     font-size: 0.9em;
 }
-

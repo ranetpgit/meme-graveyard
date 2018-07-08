@@ -1,8 +1,8 @@
 <ng-sidebar-container style="height: 100vh;">
   <!-- Sidebar -->
   <ng-sidebar mode="push" [(opened)]="sidebar_opened">
-    <div class="sidebarContent" class="closeSidebar">
-      <h4 closeSidebar>
+    <div>
+      <h4 closeSidebar class="sidebarX">
         <span>&#10799;</span> Filters </h4>
       <hr>
       <!-- Search form -->
@@ -15,9 +15,7 @@
             <ng-template ngbPanelContent>
               <ul>
                   <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
-                    <li>Menu Item</li>
-                    <li>Menu Item</li>
-                    <li>Menu Item</li>
+                  <li *ngFor="let tag of tags"><label class="sidebarCheckbox"><input type="checkbox" class="sidebarCheckbox"/> {{tag}} </label></li>
                   </ul>
             </ng-template>
           </ngb-panel>
@@ -37,7 +35,7 @@
   <!-- Page content -->
   <div ng-sidebar-content>
     <div class="col-md-2">
-      <button (click)="_toggleSidebar()" class="{{sidebar_opened ? 'arrow right toggleSidebar' : 'arrow left toggleSidebar'}}"></button>
+      <button (click)="_toggleSidebar()" class="{{sidebar_opened ? 'arrow right sidebarToggle' : 'arrow left sidebarToggle'}}"></button>
     </div>
     <div class="container">
       <div class="row">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Meme } from '../shared/types//meme';
 import { MemeService } from '../core/meme.service';
+import { AppConstants } from '../app.constants';
 
 @Component({
   selector: 'app-memes',
@@ -11,7 +12,7 @@ export class MemesComponent implements OnInit {
   memes: Meme[];
   memesOfTheDay: Meme[];
   private sidebar_opened = true;
-
+  tags = Object.values(AppConstants.TAGS);
   constructor(private memeService: MemeService) { }
 
   private _toggleSidebar() {
