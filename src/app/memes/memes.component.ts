@@ -3,6 +3,7 @@ import { Meme } from '../shared/types/meme';
 import { Hub } from '../shared/types/hub';
 import { MemeService } from '../core/meme.service';
 import { HubService } from '../core/hub.service';
+import { UserService } from '../core/user.service';
 import { AppConstants } from '../app.constants';
 
 @Component({

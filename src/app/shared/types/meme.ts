@@ -1,4 +1,6 @@
 import { DataObj } from './data-obj';
+import { UserAccount } from './user-account';
+import { Hub } from './hub';
 
 export class Meme extends DataObj {
     name: string;
@@ -7,7 +9,9 @@ export class Meme extends DataObj {
     description: string;
     tags: string[];
     image: string;
-    creator_id: number;
+    creator: UserAccount;
+    date_created: string;
+    hub: Hub;
 
     public static createEmpty(): Meme {
         let result = Meme.new();

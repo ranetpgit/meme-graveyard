@@ -1,4 +1,5 @@
 import { DataObj } from './data-obj';
+import { UserAccount } from './user-account';
 
 export class Hub extends DataObj {
     name: string;
@@ -7,9 +8,9 @@ export class Hub extends DataObj {
     num_followers: number;
     num_posts: number;
     // creator user id
-    creator_id: number;
+    creator: UserAccount;
     // admin user ids
-    admin_ids: number[];
+    admins: UserAccount[];
     date_created: string;
 
     public static createEmpty(): Hub {

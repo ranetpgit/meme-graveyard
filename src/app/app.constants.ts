@@ -1,6 +1,7 @@
 export class AppConstants {
 
     public static TAGS = {
+        GENERAL: 'General',
         MOVIES: 'Movies',
         SAD: 'Sad',
         CELEBRITY: 'Celebrity',
