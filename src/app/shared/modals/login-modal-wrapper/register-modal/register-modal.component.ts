@@ -18,6 +18,7 @@ export class RegisterModalComponent extends AbstractFormComponent {
   formUsername: string = undefined;
   formEmail: string = undefined;
   formPassword: string = undefined;
+  formPasswordCheck: string = undefined;
   userAccount: UserAccount = undefined;
   duplicateName = false;
   duplicateEmail = false;
