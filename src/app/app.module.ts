@@ -9,6 +9,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MemeDetailComponent } from './meme-detail/meme-detail.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AppRoutingModule } from './/app-routing.module';
     LandingPageComponent,
     NavbarComponent,
     MemeDetailComponent,
+    ProfilePageComponent,
   ],
   imports: [
     FormsModule,

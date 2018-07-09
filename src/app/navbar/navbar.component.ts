@@ -3,11 +3,13 @@ import { UserStore } from '../core/user.store';
 import { UserAccount } from '../shared/types/user-account';
 import { ModalHandlerService } from '../core/modal-handler.service';
 import { Subscription } from 'rxjs';
+import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
+  providers: [NgbDropdownConfig]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   subscription: Subscription;
