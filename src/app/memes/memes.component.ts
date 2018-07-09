@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Meme } from '../shared/types//meme';
+import { Meme } from '../shared/types/meme';
+import { Hub } from '../shared/types/hub';
 import { MemeService } from '../core/meme.service';
+import { HubService } from '../core/hub.service';
 import { AppConstants } from '../app.constants';
 
 @Component({
@@ -11,9 +13,12 @@ import { AppConstants } from '../app.constants';
 export class MemesComponent implements OnInit {
   memes: Meme[];
   memesOfTheDay: Meme[];
-  private sidebar_opened = true;
+  hubs: Hub[];
   tags = Object.values(AppConstants.TAGS);
-  constructor(private memeService: MemeService) { }
+
+  private sidebar_opened = true;
+
+  constructor(private memeService: MemeService, private hubService: HubService) { }
 
   private _toggleSidebar() {
     this.sidebar_opened = !this.sidebar_opened;
@@ -27,9 +32,14 @@ export class MemesComponent implements OnInit {
     this.memeService.getMemesOfTheDay().subscribe(memesOfTheDay => this.memesOfTheDay = memesOfTheDay);
   }
 
+  getHubs(): void {
+    this.hubService.getHubs().subscribe(hubs => this.hubs = hubs);
+  }
+
   ngOnInit() {
     this.getMemes();
     this.getMemesOfTheDay();
+    this.getHubs();
   }
 }
 

@@ -23,9 +23,7 @@
             <ng-template ngbPanelContent>
                 <ul>
                     <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
-                    <li>Menu Item</li>
-                    <li>Menu Item</li>
-                    <li>Menu Item</li>
+                    <li *ngFor="let hub of hubs"><label class="sidebarCheckbox"><input type="checkbox" class="sidebarCheckbox"/> {{hub.name}} </label></li>
                   </ul>
             </ng-template>
           </ngb-panel>
