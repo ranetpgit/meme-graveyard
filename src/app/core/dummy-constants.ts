@@ -1,6 +1,7 @@
 import { UserAccount } from '../shared/types/user-account';
 import * as _ from 'lodash';
 import { Meme } from '../shared/types/meme';
+import { Hub } from '../shared/types/hub';
 import { AppConstants } from '../app.constants';
 
 
@@ -47,6 +48,11 @@ export class DummyConstants {
     static readonly DUMMY_MEMESOFTHEDAY: Meme[] = [
         { id: 1, name: 'John Cena', born: '2014-12-01', died: '2015-12-01', description: 'And his name is John Cena', tags: [AppConstants.TAGS.CELEBRITY, AppConstants.TAGS.SPORTS], image: 'https://i.imgur.com/Du7RtnV.jpg' },
         { id: 2, name: 'MLG', born: '2013-12-01', died: '2015-12-01', description: 'Montage Parodies', tags: [AppConstants.TAGS.MLG], image: 'https://i.imgur.com/6x3xozV.jpg' }
+    ];
+
+    static readonly DUMMY_HUBS: Hub[] = [
+        { id: 1, name: 'Nature', date_created: '2018-06-01', description: 'Nature image memes haha', tags: [AppConstants.TAGS.NATURE], num_followers: 11345, num_posts: 389, creator: 1, admins: [2, 5] },
+        { id: 2, name: 'Surreal', date_created: '2018-05-12', description: 'Surreal memes', tags: [AppConstants.TAGS.SURREAL], num_followers: 3456, num_posts: 211, creator: 2, admins: [3, 4]  }
     ];
 }
 

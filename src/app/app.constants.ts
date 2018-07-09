@@ -17,6 +17,8 @@ export class AppConstants {
         DESPACITO: 'Despacito',
         FOOD: 'Food',
         SPORTS: 'Sports',
-        SEXISM: 'Sexism'
+        SEXISM: 'Sexism',
+        NATURE: 'Nature',
+        SURREAL: 'Surreal'
     };
 }
