@@ -35,7 +35,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
     });
   }
-
+  onLogoutButtonClick(){
+    this.userStore.logout();
+  }
   onSignInButtonClick() {
     // this.userStore.authenticate('cars723804@mail.ee', 'kfc');
     this.modaHandlerService.openLoginModal();

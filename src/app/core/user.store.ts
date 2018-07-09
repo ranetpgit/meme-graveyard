@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { UserAccount } from '../shared/types/user-account';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 
 @Injectable()
 export class UserStore {
@@ -29,6 +29,17 @@ export class UserStore {
 
     }
 
+    public saveMember(item: UserAccount) {
+        let op: Observable<UserAccount>;
+        if (item.id) {
+            op = this.userService.update(item);
+        } else {
+            op = this.userService.create(item)
+                .pipe(mergeMap(id => this.userService.get(id)));
+        }
+
+    }
+
     logout() {
         this.userService.logout();
         this.userService.getUser().subscribe(reallyLoggedInUser => {
@@ -36,5 +47,10 @@ export class UserStore {
                 this._selectedUser.next(UserAccount.createEmpty());
             }
         });
+    }
+
+    filterDatabase(filterFunc: any) {
+        return this.userService.filterDatabase(filterFunc)
+
     }
 }
