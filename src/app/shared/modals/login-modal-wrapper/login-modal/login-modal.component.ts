@@ -2,27 +2,29 @@ import { Component, Input, OnDestroy } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { UserStore } from '../../../core/user.store';
+import { UserStore } from '../../../../core/user.store';
+import { AbstractFormComponent } from '../../../abstract-form.component';
 
 @Component({
   selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.css']
 })
-export class LoginModalComponent implements OnDestroy {
+export class LoginModalComponent extends AbstractFormComponent implements OnDestroy {
 
 
 
   @Input() id: number;
-  myForm: FormGroup;
-  username = '';
-  password = '';
+  formGroup: FormGroup;
+  formPassword: string = undefined;
+  formUsername: string = undefined;
+ 
   subscription: Subscription;
   showAlert = false;
   submittedForm = false;
 
-  constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder, private userStore: UserStore) {
-    this.createForm();
+  constructor(public activeModal: NgbActiveModal, private userStore: UserStore) {
+    super();
   }
 
   ngOnDestroy() {
@@ -31,21 +33,13 @@ export class LoginModalComponent implements OnDestroy {
     }
   }
 
-
-  private createForm() {
-    this.myForm = this.formBuilder.group({
-      username: '',
-      password: ''
-    });
-  }
-
   public submitForm() {
-    console.log(this.username);
-    console.log(this.password);
-    this.subscription = this.userStore.authenticate(this.username, this.password).subscribe(user => {
+    console.log(this.formUsername);
+    console.log(this.formPassword);
+    this.subscription = this.userStore.authenticate(this.formUsername, this.formPassword).subscribe(user => {
       if (user && !user.isEmpty()) {
         this.showAlert = false;
-        this.activeModal.close(this.myForm.value);
+        this.activeModal.close(this.formGroup.value);
       } else {
         this.showAlert = true;
       }
