@@ -1,6 +1,5 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { UserStore } from '../../../../core/user.store';
 import { AbstractFormComponent } from '../../../abstract-form.component';
@@ -15,7 +14,6 @@ export class LoginModalComponent extends AbstractFormComponent implements OnDest
 
 
   @Input() id: number;
-  formGroup: FormGroup;
   formPassword: string = undefined;
   formUsername: string = undefined;
  

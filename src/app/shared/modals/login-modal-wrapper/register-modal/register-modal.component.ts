@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserStore } from '../../../../core/user.store';
 import { AbstractFormComponent } from '../../../abstract-form.component';
@@ -14,7 +13,6 @@ import { UserAccount } from '../../../types/user-account';
 export class RegisterModalComponent extends AbstractFormComponent {
 
   @Input() id: number;
-  formGroup: FormGroup;
   formUsername: string = undefined;
   formEmail: string = undefined;
   formPassword: string = undefined;
