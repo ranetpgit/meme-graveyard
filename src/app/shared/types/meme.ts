@@ -7,6 +7,7 @@ export class Meme extends DataObj {
     description: string;
     tags: string[];
     image: string;
+    creator_id: number;
 
     public static createEmpty(): Meme {
         let result = Meme.new();

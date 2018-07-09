@@ -11,21 +11,21 @@
       </div>
 
       <ngb-accordion #acc="ngbAccordion">
-          <ngb-panel title="Tags">
-            <ng-template ngbPanelContent>
-              <ul>
-                  <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
-                  <li *ngFor="let tag of tags"><label class="sidebarCheckbox"><input type="checkbox" class="sidebarCheckbox"/> {{tag}} </label></li>
-                  </ul>
-            </ng-template>
-          </ngb-panel>
           <ngb-panel title="Hubs">
-            <ng-template ngbPanelContent>
-                <ul>
-                    <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
-                    <li *ngFor="let hub of hubs"><label class="sidebarCheckbox"><input type="checkbox" class="sidebarCheckbox"/> {{hub.name}} </label></li>
-                  </ul>
-            </ng-template>
+              <ng-template ngbPanelContent>
+                  <ul>
+                      <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
+                      <li *ngFor="let hub of hubs"><label class="sidebarCheckbox"><input type="checkbox" class="sidebarCheckbox"/> {{hub.name}} </label></li>
+                    </ul>
+              </ng-template>
+          </ngb-panel>
+          <ngb-panel title="Tags">
+              <ng-template ngbPanelContent>
+                  <ul>
+                      <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
+                      <li *ngFor="let tag of tags"><label class="sidebarCheckbox"><input type="checkbox" class="sidebarCheckbox"/> {{tag}} </label></li>
+                      </ul>
+                </ng-template>
           </ngb-panel>
         </ngb-accordion>
     </div>
@@ -93,9 +93,7 @@
               </p>
             </li>
             <li>
-              <a href="" class="detailLink"> link, </a>
-              <a href="" class="detailLink">to, </a>
-              <a href="" class="detailLink">tags </a>
+              <a *ngFor="let memetag of meme.tags" href="" class="detailLink"> {{memetag}} </a>
             </li>
             <li>
               <a class="additionalLink" routerLink="/detail/{{meme.id}}"> NUMCOM comments </a>

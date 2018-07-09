@@ -7,9 +7,9 @@ export class Hub extends DataObj {
     num_followers: number;
     num_posts: number;
     // creator user id
-    creator: number;
+    creator_id: number;
     // admin user ids
-    admins: number[];
+    admin_ids: number[];
     date_created: string;
 
     public static createEmpty(): Hub {
