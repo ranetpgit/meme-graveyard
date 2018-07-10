@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MemesComponent } from './memes.component';
+import { MemeSearchComponent } from './meme-search.component';
 
-describe('MemesComponent', () => {
-  let component: MemesComponent;
-  let fixture: ComponentFixture<MemesComponent>;
+describe('MemeSearchComponent', () => {
+  let component: MemeSearchComponent;
+  let fixture: ComponentFixture<MemeSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MemesComponent ]
+      declarations: [ MemeSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MemesComponent);
+    fixture = TestBed.createComponent(MemeSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

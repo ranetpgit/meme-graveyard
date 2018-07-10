@@ -30,8 +30,6 @@ export class DummyConstants {
             password: 'kfc'
         })];
 
-        
-        
     static readonly DUMMY_HUBS: Hub[] = [
         { id: 1, name: 'General', date_created: '2018-07-08', description: 'General', tags: [AppConstants.TAGS.GENERAL], num_followers: 3456, num_posts: 211, creator: DummyConstants.DUMMY_USERACCOUNTS[2], admins: [DummyConstants.DUMMY_USERACCOUNTS[1], DummyConstants.DUMMY_USERACCOUNTS[1]]  },
         { id: 2, name: 'Nature', date_created: '2018-07-08', description: 'Nature image memes haha', tags: [AppConstants.TAGS.NATURE], num_followers: 11345, num_posts: 389, creator: DummyConstants.DUMMY_USERACCOUNTS[1], admins: [DummyConstants.DUMMY_USERACCOUNTS[2], DummyConstants.DUMMY_USERACCOUNTS[0]] },

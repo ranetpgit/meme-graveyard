@@ -25,8 +25,11 @@ export class MemesComponent implements OnInit {
     this.sidebar_opened = !this.sidebar_opened;
   }
 
+  memeSearch(): void {
+    this.memeService.searchMemes('').subscribe(memes => this.memes = memes);
+  }
   getMemes(): void {
-    this.memeService.getMemes().subscribe(memes => this.memes = memes);
+    this.memeService.searchMemes('').subscribe(memes => this.memes = memes);
   }
 
   getMemesOfTheDay(): void {

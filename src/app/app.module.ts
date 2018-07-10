@@ -11,6 +11,7 @@ import { MemeDetailComponent } from './meme-detail/meme-detail.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MemesComponent } from './memes/memes.component';
 import { SidebarModule } from 'ng-sidebar';
+import { MemeSearchComponent } from './meme-search/meme-search.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SidebarModule } from 'ng-sidebar';
     NavbarComponent,
     MemeDetailComponent,
     MemesComponent,
+    MemeSearchComponent,
   ],
   imports: [
     FormsModule,
