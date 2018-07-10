@@ -5,19 +5,22 @@ import { MemeService } from '../core/meme.service';
 import { HubService } from '../core/hub.service';
 import { UserService } from '../core/user.service';
 import { AppConstants } from '../app.constants';
+import { MemeFilterPipe } from './memes.pipe';
 
 @Component({
   selector: 'app-memes',
   templateUrl: './memes.component.html',
-  styleUrls: ['./memes.component.css']
+  styleUrls: ['./memes.component.css'],
 })
 export class MemesComponent implements OnInit {
   memes: Meme[];
-  memesOfTheDay: Meme[];
+  filteredMemes: Meme[] = [];
+  memesOfTheDay: Meme[]; // TODO
   hubs: Hub[];
   checkedHubs: Hub[] = [];
-  tags = Object.values(AppConstants.TAGS);
+  tags = Object.values(AppConstants.TAGS); // TODO
 
+  memeFilterPipe = new MemeFilterPipe();
   private sidebar_opened = true;
 
   constructor(private memeService: MemeService, private hubService: HubService) { }
@@ -32,10 +35,16 @@ export class MemesComponent implements OnInit {
     } else {
       this.checkedHubs.splice(this.checkedHubs.indexOf(hub, 0), 1);
     }
+    this.filterMemes();
+  }
+
+  filterMemes(): void {
+    this.filteredMemes = this.memeFilterPipe.transform(this.memes, this.checkedHubs);
   }
 
   getMemes(): void {
     this.memeService.getMemes().subscribe(memes => this.memes = memes);
+    this.filteredMemes = this.memes;
   }
 
   getMemesOfTheDay(): void {

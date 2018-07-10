@@ -57,7 +57,7 @@
           </select>
         </div>
       </div>
-      <div class="row memeRow" *ngFor="let meme of (memes | filteredMemes: checkedHubs)">
+      <div class="row memeRow" *ngFor="let meme of (filteredMemes | memeFilter: checkedHubs)">
         <div class="col-sm-1 voteCol">
           <div class="midcol unvoted">
             <!-- <button type="button" class=""> -->

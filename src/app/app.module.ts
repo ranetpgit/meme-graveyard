@@ -12,7 +12,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { MemesComponent } from './memes/memes.component';
 import { SidebarModule } from 'ng-sidebar';
 import { MemeSearchComponent } from './meme-search/meme-search.component';
-import { FilteredMemesPipe } from './memes/memes.pipe';
+import { MemeFilterPipe } from './memes/memes.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { FilteredMemesPipe } from './memes/memes.pipe';
     MemeDetailComponent,
     MemesComponent,
     MemeSearchComponent,
-    FilteredMemesPipe
+    MemeFilterPipe
   ],
   imports: [
     FormsModule,
