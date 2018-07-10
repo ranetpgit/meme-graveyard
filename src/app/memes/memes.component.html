@@ -16,7 +16,7 @@
               <ng-template ngbPanelContent>
                   <ul>
                       <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
-                      <li *ngFor="let hub of hubs"><label class="sidebarCheckbox"><input type="checkbox" (change)="filterHub(hub)"  class="sidebarCheckbox"/> {{hub.name}} </label></li>
+                      <li *ngFor="let hub of hubs"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleHub(hub)" class="sidebarCheckbox"/> {{hub.name}} </label></li>
                     </ul>
               </ng-template>
           </ngb-panel>
@@ -24,7 +24,7 @@
               <ng-template ngbPanelContent>
                   <ul>
                       <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
-                      <li *ngFor="let tag of tags"><label class="sidebarCheckbox"><input type="checkbox" class="sidebarCheckbox"/> {{tag}} </label></li>
+                      <li *ngFor="let tag of tags"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleTag(tag)" class="sidebarCheckbox"/> {{tag.name}} </label></li>
                       </ul>
                 </ng-template>
           </ngb-panel>
@@ -57,7 +57,7 @@
           </select>
         </div>
       </div>
-      <div class="row memeRow" *ngFor="let meme of (filteredMemes | memeFilter: checkedHubs)">
+      <div class="row memeRow" *ngFor="let meme of (filteredMemes | memeFilter: checkedHubs : checkedTags)">
         <div class="col-sm-1 voteCol">
           <div class="midcol unvoted">
             <!-- <button type="button" class=""> -->
@@ -71,7 +71,7 @@
         </div>
         <div class="col-md-2 memeCol">
           <div class="text-center thumbDiv">
-            <a class="thumbLink" routerLink="/detail/{{meme.id}}">
+            <a class="thumbLink" routerLink="/m/{{meme.id}}">
               <img src="{{meme.image}}" class="img-fluid memeImg" alt="{{meme.name}}">
             </a>
           </div>
@@ -79,7 +79,7 @@
         <div class="col-md-9 detailCol">
           <ul>
             <li>
-              <a class="titleLink" routerLink="/detail/{{meme.id}}">{{meme.name}}</a>
+              <a class="titleLink" routerLink="/m/{{meme.id}}">{{meme.name}}</a>
             </li>
             <li>
               <p class="date">{{meme.born}} - {{meme.died}}</p>
@@ -94,10 +94,10 @@
               </p>
             </li>
             <li>
-              <a *ngFor="let memetag of meme.tags" href="" class="detailLink"> {{memetag}} </a>
+              <a *ngFor="let memetag of meme.tags" href="" class="detailLink"> {{memetag.name}} </a>
             </li>
             <li>
-              <a class="additionalLink" routerLink="/detail/{{meme.id}}"> NUMCOM comments </a>
+              <a class="additionalLink" routerLink="/m/{{meme.id}}"> NUMCOM comments </a>
             </li>
           </ul>
         </div>

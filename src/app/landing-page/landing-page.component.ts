@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Meme } from '../shared/types/meme';
+import { Memeoday } from '../shared/types/memeoday';
 import { MemeService } from '../core/meme.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { MemeService } from '../core/meme.service';
 export class LandingPageComponent implements OnInit {
   thrivingMemes: Meme[];
   deadMemes: Meme[];
-  memeOfTheDay: Meme;
+  memeOfTheDay: Memeoday;
 
   constructor(private memeService: MemeService) { }
 

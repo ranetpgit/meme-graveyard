@@ -1,15 +1,14 @@
 import { DataObj } from './data-obj';
 import { UserAccount } from './user-account';
+import { Tag } from './tag';
 
 export class Hub extends DataObj {
     name: string;
     description: string;
-    tags: string[];
+    tags: Tag[];
     num_followers: number;
     num_posts: number;
-    // creator user id
     creator: UserAccount;
-    // admin user ids
     admins: UserAccount[];
     date_created: string;
 

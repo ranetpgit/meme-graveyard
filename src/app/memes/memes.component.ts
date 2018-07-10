@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Meme } from '../shared/types/meme';
+import { Memeoday } from '../shared/types/memeoday';
 import { Hub } from '../shared/types/hub';
+import { Tag } from '../shared/types/tag';
 import { MemeService } from '../core/meme.service';
 import { HubService } from '../core/hub.service';
+import { TagService } from '../core/tag.service';
 import { UserService } from '../core/user.service';
 import { AppConstants } from '../app.constants';
 import { MemeFilterPipe } from './memes.pipe';
@@ -15,21 +18,22 @@ import { MemeFilterPipe } from './memes.pipe';
 export class MemesComponent implements OnInit {
   memes: Meme[];
   filteredMemes: Meme[] = [];
-  memesOfTheDay: Meme[]; // TODO
+  memesOfTheDay: Memeoday[]; // TODO
   hubs: Hub[];
   checkedHubs: Hub[] = [];
-  tags = Object.values(AppConstants.TAGS); // TODO
+  tags: Tag[];
+  checkedTags: Tag[] = [];
 
   memeFilterPipe = new MemeFilterPipe();
   private sidebar_opened = true;
 
-  constructor(private memeService: MemeService, private hubService: HubService) { }
+  constructor(private memeService: MemeService, private hubService: HubService, private tagService: TagService) { }
 
   private _toggleSidebar() {
     this.sidebar_opened = !this.sidebar_opened;
   }
 
-  filterHub(hub: Hub): void {
+  toggleHub(hub: Hub): void {
     if (!this.checkedHubs.includes(hub)) {
       this.checkedHubs.push(hub);
     } else {
@@ -38,8 +42,17 @@ export class MemesComponent implements OnInit {
     this.filterMemes();
   }
 
+  toggleTag(tag: Tag): void {
+    if (!this.checkedTags.includes(tag)) {
+      this.checkedTags.push(tag);
+    } else {
+      this.checkedTags.splice(this.checkedTags.indexOf(tag, 0), 1);
+    }
+    this.filterMemes();
+  }
+
   filterMemes(): void {
-    this.filteredMemes = this.memeFilterPipe.transform(this.memes, this.checkedHubs);
+    this.filteredMemes = this.memeFilterPipe.transform(this.memes, this.checkedHubs, this.checkedTags);
   }
 
   getMemes(): void {
@@ -55,10 +68,15 @@ export class MemesComponent implements OnInit {
     this.hubService.getHubs().subscribe(hubs => this.hubs = hubs);
   }
 
+  getTags(): void {
+    this.tagService.getTags().subscribe(tags => this.tags = tags);
+  }
+
   ngOnInit() {
     this.getMemes();
     this.getMemesOfTheDay();
     this.getHubs();
+    this.getTags();
   }
 }
 

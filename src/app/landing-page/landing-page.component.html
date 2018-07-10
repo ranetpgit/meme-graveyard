@@ -4,13 +4,13 @@
     <div class="col-md-2"></div>
     <div class="col-md-4">
       <div class="memeodayWrapper">
-        <img src="{{memeOfTheDay.image}}" class=" memeodayImg" alt="{{memeOfTheDay.name}}">
+        <img src="{{memeOfTheDay.meme.image}}" class=" memeodayImg" alt="{{memeOfTheDay.meme.name}}">
       </div>
     </div>
     <div class="col-md-4">
-      <h4>{{memeOfTheDay.name | uppercase }}</h4>
-      <b>{{memeOfTheDay.born}} - {{memeOfTheDay.died}}</b>
-      <p>{{memeOfTheDay.description}}</p>
+      <h4>{{memeOfTheDay.meme.name | uppercase }}</h4>
+      <b>{{memeOfTheDay.meme.born}} - {{memeOfTheDay.meme.died}}</b>
+      <p>{{memeOfTheDay.meme.description}}</p>
     </div>
     <div class="col-md-2"></div>
   </div>
@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-md-3 memeCol" *ngFor="let meme of thrivingMemes">
       <div class="thumbnail text-center">
-        <a routerLink="/detail/{{meme.id}}">
+        <a routerLink="/m/{{meme.id}}">
           <img src="{{meme.image}}" class="img-thumbnail memeImg" alt="{{meme.name}}">
           <div class="caption">
             <p>{{meme.name}}</p>
@@ -35,7 +35,7 @@
   <div class="row">
     <div class="col-md-3 memeCol" *ngFor="let meme of deadMemes">
       <div class="thumbnail text-center">
-        <a routerLink="/detail/{{meme.id}}">
+        <a routerLink="/m/{{meme.id}}">
           <img src="{{meme.image}}" class="img-thumbnail memeImg" alt="{{meme.name}}">
           <div class="caption">
             <p>{{meme.name}}</p>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Meme } from '../shared/types/meme';
+import { Memeoday } from '../shared/types/memeoday';
 import { DummyConstants } from '../core/dummy-constants';
 
 import { Observable, of } from 'rxjs';
@@ -23,11 +24,11 @@ export class MemeService {
     return of(this.dummyMemes.find(meme => meme.id === id));
   }
 
-  getMemesOfTheDay(): Observable<Meme[]> {
+  getMemesOfTheDay(): Observable<Memeoday[]> {
     return of(this.dummyMemesOfTheDay);
   }
 
-  getMemeOfTheDay(): Observable<Meme> {
+  getMemeOfTheDay(): Observable<Memeoday> {
     return of(this.dummyMemesOfTheDay[0]); // temp, just get the latest value
   }
 

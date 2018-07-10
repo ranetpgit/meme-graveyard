@@ -6,7 +6,7 @@ import { MemesComponent } from './memes/memes.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  { path: 'detail/:id', component: MemeDetailComponent },
+  { path: 'm/:id', component: MemeDetailComponent },
   { path: 'memes', component: MemesComponent },
 ];
 

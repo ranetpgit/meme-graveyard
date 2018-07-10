@@ -1,13 +1,14 @@
 import { DataObj } from './data-obj';
 import { UserAccount } from './user-account';
 import { Hub } from './hub';
+import { Tag } from './tag';
 
 export class Meme extends DataObj {
     name: string;
     born: string;
     died: string;
     description: string;
-    tags: string[];
+    tags: Tag[];
     image: string;
     creator: UserAccount;
     date_created: string;
