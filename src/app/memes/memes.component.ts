@@ -15,6 +15,7 @@ export class MemesComponent implements OnInit {
   memes: Meme[];
   memesOfTheDay: Meme[];
   hubs: Hub[];
+  checkedHubs: Hub[] = [];
   tags = Object.values(AppConstants.TAGS);
 
   private sidebar_opened = true;
@@ -25,11 +26,16 @@ export class MemesComponent implements OnInit {
     this.sidebar_opened = !this.sidebar_opened;
   }
 
-  memeSearch(): void {
-    this.memeService.searchMemes('').subscribe(memes => this.memes = memes);
+  filterHub(hub: Hub): void {
+    if (!this.checkedHubs.includes(hub)) {
+      this.checkedHubs.push(hub);
+    } else {
+      this.checkedHubs.splice(this.checkedHubs.indexOf(hub, 0), 1);
+    }
   }
+
   getMemes(): void {
-    this.memeService.searchMemes('').subscribe(memes => this.memes = memes);
+    this.memeService.getMemes().subscribe(memes => this.memes = memes);
   }
 
   getMemesOfTheDay(): void {

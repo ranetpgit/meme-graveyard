@@ -7,8 +7,8 @@
       <hr>
       <!-- Search form -->
       <div class="">
-        <app-meme-search [(memes$)]="memes"></app-meme-search>
-        <!-- <input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"> -->
+        <app-meme-search></app-meme-search>
+        <input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search">
       </div>
 
       <ngb-accordion #acc="ngbAccordion">
@@ -16,7 +16,7 @@
               <ng-template ngbPanelContent>
                   <ul>
                       <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
-                      <li *ngFor="let hub of hubs"><label class="sidebarCheckbox"><input type="checkbox" class="sidebarCheckbox"/> {{hub.name}} </label></li>
+                      <li *ngFor="let hub of hubs"><label class="sidebarCheckbox"><input type="checkbox" (change)="filterHub(hub)"  class="sidebarCheckbox"/> {{hub.name}} </label></li>
                     </ul>
               </ng-template>
           </ngb-panel>
@@ -57,7 +57,7 @@
           </select>
         </div>
       </div>
-      <div class="row memeRow" *ngFor="let meme of memes">
+      <div class="row memeRow" *ngFor="let meme of (memes | filteredMemes: checkedHubs)">
         <div class="col-sm-1 voteCol">
           <div class="midcol unvoted">
             <!-- <button type="button" class=""> -->
