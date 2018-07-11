@@ -11,6 +11,7 @@ export class DummyConstants {
             id: 1,
             userId: 1,
             accountName: 'AntiVaxMOvemeNT!!',
+            profileImg: 'https://i.imgur.com/J4qLi5r.png',
             email: 'dfuosir341@gmail.com',
             password: 'asd12'
         }),
@@ -18,6 +19,7 @@ export class DummyConstants {
             id: 2,
             userId: 2,
             accountName: 'AutismSpreader',
+            profileImg: 'https://i.imgur.com/ucv7DOQ.jpg',
             email: 'catlove9732@hot.ee',
             password: 'asd122'
         }),
@@ -26,6 +28,7 @@ export class DummyConstants {
             userId: 3,
             accountName: 'black_people',
             email: 'cars723804@mail.ee',
+            profileImg: 'https://i.imgur.com/665xgtC.png',
             password: 'kfc'
         })];
 

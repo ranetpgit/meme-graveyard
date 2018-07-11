@@ -1,21 +1,24 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserStore } from '../core/user.store';
-import { UserAccount } from '../shared/types/user-account';
-import { ModalHandlerService } from '../core/modal-handler.service';
+import { UserStore } from '../../core/user.store';
+import { UserAccount } from '../../shared/types/user-account';
+import { ModalHandlerService } from '../../core/modal-handler.service';
 import { Subscription } from 'rxjs';
-import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  providers: [NgbDropdownConfig]
+  providers: []
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  constructor(private userStore: UserStore, private modaHandlerService: ModalHandlerService) { }
   public loggedInUser: UserAccount = undefined;
 
+  constructor(private userStore: UserStore, private modaHandlerService: ModalHandlerService, ) {
+
+
+   }
   ngOnDestroy() {
     if (this.subscription) {
         this.subscription.unsubscribe();

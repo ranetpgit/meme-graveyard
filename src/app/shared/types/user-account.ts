@@ -7,6 +7,7 @@ export class UserAccount extends DataObj {
     accountName: string = undefined;
     email: string = undefined;
     password: string = undefined;
+    profileImg: string = undefined;
     values: any[] = undefined;
 
     public static createEmpty(): UserAccount {

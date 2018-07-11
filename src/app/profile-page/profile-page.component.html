@@ -1,3 +1,9 @@
-<p>
-  profile-page works!
-</p>
+<div *ngIf="user | async as user">
+  <h3>"{{ user.accountName }}"</h3>
+  <div>
+    <label>Id: </label>{{ user.id }}</div>
+  <div>
+    <img height=150 src={{user.profileImg}}>
+  </div>
+  
+</div>
