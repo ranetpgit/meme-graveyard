@@ -21,4 +21,12 @@ export class TagService {
   getTag(id: number): Observable<Tag> {
     return of(this.dummyTags.find(tag => tag.id === id));
   }
+
+  searchTags(term: string): Observable<Tag[]> {
+    if (!term.trim()) {
+      // if not search term, return empty meme array.
+      return of(this.dummyTags);
+    }
+    return of(this.dummyTags.filter(tag => tag.name.toLowerCase().includes(term.toLowerCase())));
+  }
 }
