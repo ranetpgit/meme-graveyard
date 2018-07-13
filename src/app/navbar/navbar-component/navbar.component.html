@@ -22,20 +22,23 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </form>
     <ul class="navbar-nav">
-      <li *ngIf="loggedInUser" class="nav-item">
-          <div ngbDropdown #myDrop="ngbDropdown" (mouseenter) ="$event.stopPropagation(); myDrop.open();" (mouseleave) ="$event.stopPropagation(); myDrop.close();">
-              <a class="nav-link" href="#"  id="dropdownConfig"  ngbDropdownToggle>{{loggedInUser?.accountName}}</a>
-              <div ngbDropdownMenu aria-labelledby="dropdownConfig">
-                <button class="dropdown-item" routerLink="/u/{{loggedInUser?.accountName}}">View profile</button>
-                <button class="dropdown-item">Settings</button>
-                <button class="dropdown-item" (click)="onLogoutButtonClick()">Log out</button>
-              </div>
-            </div>
+      <li *ngIf="loggedInUser" class="nav-item" >
+
+        <div ngbDropdown #myDrop="ngbDropdown" (mouseenter)="$event.stopPropagation(); myDrop.open();"
+        (mouseleave)="$event.stopPropagation(); myDrop.close();">
+          <a class="nav-link" href="#" id="dropDown" ngbDropdownToggle>{{loggedInUser?.accountName}}</a>
+          <div ngbDropdownMenu aria-labelledby="dropDown" >
+            <button class="dropdown-item" routerLink="/u/{{loggedInUser?.accountName}}">View profile</button>
+            <button class="dropdown-item">Settings</button>
+            <button class="dropdown-item" (click)="onLogoutButtonClick()">Log out</button>
+          </div>
+        </div>
+
       </li>
       <li class="nav-item">
         <button *ngIf="!loggedInUser" type="button" class="btn btn-default" (click)="onSignInButtonClick()">Sign in</button>
       </li>
-      
+
     </ul>
   </div>
 </nav>
