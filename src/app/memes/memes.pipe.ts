@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
+import { union } from 'lodash';
 import { Meme } from '../shared/types/meme';
 import { Hub } from '../shared/types/hub';
 import { Tag } from '../shared/types/tag';
@@ -13,10 +13,10 @@ export class MemeFilterPipe implements PipeTransform {
         } else {
             let filteredMemes = [];
             if (filterHubs.length > 0) {
-                filteredMemes = filteredMemes.concat(allMemes.filter(meme => filterHubs.includes(meme.hub)));
+                filteredMemes = union(filteredMemes, allMemes.filter(meme => filterHubs.includes(meme.hub)));
             }
             if (filterTags.length > 0) {
-                filteredMemes = filteredMemes.concat(allMemes.filter(meme => filterTags.some(tag => meme.tags.indexOf(tag) >= 0)));
+                filteredMemes = union(filteredMemes, allMemes.filter(meme => filterTags.some(tag => meme.tags.indexOf(tag) >= 0)));
             }
             return filteredMemes;
         }

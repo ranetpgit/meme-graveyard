@@ -31,13 +31,4 @@ export class MemeService {
   getMemeOfTheDay(): Observable<Memeoday> {
     return of(this.dummyMemesOfTheDay[0]); // temp, just get the latest value
   }
-
-  searchMemes(term: string): Observable<Meme[]> {
-
-    if (!term.trim()) {
-      // if not search term, return empty meme array.
-      return of(this.dummyMemes);
-    }
-    return of(this.dummyMemes.filter(meme => meme.name.toLowerCase().includes(term.toLowerCase())));
-  }
 }

@@ -9,8 +9,7 @@ import { TagService } from '../core/tag.service';
 import { UserService } from '../core/user.service';
 import { AppConstants } from '../app.constants';
 import { MemeFilterPipe } from './memes.pipe';
-import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-memes',
@@ -26,7 +25,6 @@ export class MemesComponent implements OnInit {
   tags: Tag[];
   checkedTags: Tag[] = [];
 
-  private searchTerms = new Subject<string>();
   memeFilterPipe = new MemeFilterPipe();
   private sidebar_opened = true;
 
@@ -75,22 +73,9 @@ export class MemesComponent implements OnInit {
     this.tagService.getTags().subscribe(tags => this.tags = tags);
   }
 
-  // BAD
-  initMemeSearch(): void {
-    this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
-      debounceTime(300),
-
-      // ignore new term if same as previous term
-      distinctUntilChanged(),
-
-      // switch to new search observable each time the term changes
-      switchMap((term: string) => this.memeService.searchMemes(term)),
-    ).subscribe(foundMemes => this.filteredMemes = foundMemes);
-  }
-
-  search(term: string): void {
-    this.searchTerms.next(term);
+  receiveSearch(event) {
+    // debugger;
+    this.filteredMemes = event;
   }
 
   ngOnInit() {
@@ -98,7 +83,6 @@ export class MemesComponent implements OnInit {
     this.getMemesOfTheDay();
     this.getHubs();
     this.getTags();
-    this.initMemeSearch();
   }
 }
 

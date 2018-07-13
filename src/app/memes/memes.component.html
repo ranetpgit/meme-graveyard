@@ -7,8 +7,7 @@
       <hr>
       <!-- Search form -->
       <div class="">
-        <!-- <app-meme-search></app-meme-search> -->
-        <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+        <app-meme-search [memes]="memes" (searchEvent)="receiveSearch($event)"></app-meme-search>
         <input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search">
       </div>
 
