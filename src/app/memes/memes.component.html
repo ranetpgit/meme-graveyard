@@ -7,24 +7,26 @@
       <hr>
       <!-- Search form -->
       <div class="">
-        <app-meme-search [memes]="memes" (searchEvent)="receiveSearch($event)"></app-meme-search>
-        <input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search">
+        <app-meme-search [memes]="memes" (searchEvent)="receiveMemeSearch($event)"></app-meme-search>
+        <!-- <input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"> -->
       </div>
 
       <ngb-accordion #acc="ngbAccordion">
           <ngb-panel title="Hubs">
               <ng-template ngbPanelContent>
                   <ul>
-                      <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
-                      <li *ngFor="let hub of hubs"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleHub(hub)" class="sidebarCheckbox"/> {{hub.name}} </label></li>
+                      <!-- <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li> -->
+                      <li><app-hub-search [hubs]="hubs" (searchEvent)="receiveHubSearch($event)"></app-hub-search></li>
+                      <li *ngFor="let hub of filteredHubs"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleHub(hub)" class="sidebarCheckbox"/> {{hub.name}} </label></li>
                     </ul>
               </ng-template>
           </ngb-panel>
           <ngb-panel title="Tags">
               <ng-template ngbPanelContent>
                   <ul>
-                      <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li>
-                      <li *ngFor="let tag of tags"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleTag(tag)" class="sidebarCheckbox"/> {{tag.name}} </label></li>
+                      <!-- <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li> -->
+                      <li><app-tag-search [tags]="tags" (searchEvent)="receiveTagSearch($event)"></app-tag-search></li>
+                      <li *ngFor="let tag of filteredTags"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleTag(tag)" class="sidebarCheckbox"/> {{tag.name}} </label></li>
                       </ul>
                 </ng-template>
           </ngb-panel>

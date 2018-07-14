@@ -19,11 +19,16 @@ import { Observable } from 'rxjs';
 export class MemesComponent implements OnInit {
   memes: Meme[];
   filteredMemes: Meme[] = [];
-  memesOfTheDay: Memeoday[]; // TODO
+
   hubs: Hub[];
+  filteredHubs: Hub[];
   checkedHubs: Hub[] = [];
+
   tags: Tag[];
+  filteredTags: Tag[];
   checkedTags: Tag[] = [];
+
+  memesOfTheDay: Memeoday[]; // TODO
 
   memeFilterPipe = new MemeFilterPipe();
   private sidebar_opened = true;
@@ -67,15 +72,24 @@ export class MemesComponent implements OnInit {
 
   getHubs(): void {
     this.hubService.getHubs().subscribe(hubs => this.hubs = hubs);
+    this.filteredHubs = this.hubs;
   }
 
   getTags(): void {
     this.tagService.getTags().subscribe(tags => this.tags = tags);
+    this.filteredTags = this.tags;
   }
 
-  receiveSearch(event) {
-    // debugger;
+  receiveMemeSearch(event) {
     this.filteredMemes = event;
+  }
+
+  receiveTagSearch(event) {
+    this.filteredTags = event;
+  }
+
+  receiveHubSearch(event) {
+    this.filteredHubs = event;
   }
 
   ngOnInit() {

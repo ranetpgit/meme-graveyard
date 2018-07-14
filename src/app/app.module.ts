@@ -13,6 +13,8 @@ import { MemesComponent } from './memes/memes.component';
 import { SidebarModule } from 'ng-sidebar';
 import { MemeSearchComponent } from './meme-search/meme-search.component';
 import { MemeFilterPipe } from './memes/memes.pipe';
+import { TagSearchComponent } from './tag-search/tag-search.component';
+import { HubSearchComponent } from './hub-search/hub-search.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MemeFilterPipe } from './memes/memes.pipe';
     MemeDetailComponent,
     MemesComponent,
     MemeSearchComponent,
-    MemeFilterPipe
+    MemeFilterPipe,
+    TagSearchComponent,
+    HubSearchComponent
   ],
   imports: [
     FormsModule,
