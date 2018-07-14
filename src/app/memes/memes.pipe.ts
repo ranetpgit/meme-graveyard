@@ -7,16 +7,25 @@ import { Tag } from '../shared/types/tag';
 @Pipe({ name: 'memeFilter' })
 export class MemeFilterPipe implements PipeTransform {
 
-    transform(allMemes: Meme[], filterHubs: Hub[], filterTags: Tag[]) {
+    transform(allMemes: Meme[], memesOfTheDay: Meme[], filterHubs: Hub[], filterTags: Tag[], showMemesOfTheDay: boolean) {
+        // memesOfTheDay.map(function (i) { return i.meme; })
+        if (showMemesOfTheDay) {
+            return this.filter(memesOfTheDay, filterHubs, filterTags);
+        } else {
+            return this.filter(allMemes, filterHubs, filterTags);
+        }
+    }
+
+    filter(memes, filterHubs: Hub[], filterTags: Tag[]) {
         if (!(filterHubs.length > 0 || filterTags.length > 0)) {
-            return allMemes;
+            return memes;
         } else {
             let filteredMemes = [];
             if (filterHubs.length > 0) {
-                filteredMemes = union(filteredMemes, allMemes.filter(meme => filterHubs.includes(meme.hub)));
+                filteredMemes = union(filteredMemes, memes.filter(meme => filterHubs.includes(meme.hub)));
             }
             if (filterTags.length > 0) {
-                filteredMemes = union(filteredMemes, allMemes.filter(meme => filterTags.some(tag => meme.tags.indexOf(tag) >= 0)));
+                filteredMemes = union(filteredMemes, memes.filter(meme => filterTags.some(tag => meme.tags.indexOf(tag) >= 0)));
             }
             return filteredMemes;
         }

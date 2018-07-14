@@ -11,7 +11,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class MemeService {
   private dummyMemes = DummyConstants.DUMMY_MEMES.slice();
-  private dummyMemesOfTheDay = DummyConstants.DUMMY_MEMESOFTHEDAY.slice();
+  private dummyMemesoday = DummyConstants.DUMMY_MEMESODAY.slice();
 
   constructor() { }
 
@@ -24,11 +24,11 @@ export class MemeService {
     return of(this.dummyMemes.find(meme => meme.id === id));
   }
 
-  getMemesOfTheDay(): Observable<Memeoday[]> {
-    return of(this.dummyMemesOfTheDay);
+  getMemesoday(): Observable<Memeoday[]> {
+    return of(this.dummyMemesoday);
   }
 
-  getMemeOfTheDay(): Observable<Memeoday> {
-    return of(this.dummyMemesOfTheDay[0]); // temp, just get the latest value
+  getMemeoday(): Observable<Memeoday> {
+    return of(this.dummyMemesoday[0]); // temp, just get the latest value
   }
 }

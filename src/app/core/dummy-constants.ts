@@ -74,9 +74,9 @@ export class DummyConstants {
         { id: 10, name: 'Despacito 2', born: '2018-05-01', died: '', description: 'Despacito 2 confirmed', tags: [DummyConstants.DUMMY_TAGS[14], DummyConstants.DUMMY_TAGS[13]], image: 'https://i.imgur.com/JaiDr5g.jpg', creator: DummyConstants.DUMMY_USERACCOUNTS[0] , date_created: '2019-02-05', hub: DummyConstants.DUMMY_HUBS[0]},
     ];
 
-    static readonly DUMMY_MEMESOFTHEDAY: Memeoday[] = [
+    static readonly DUMMY_MEMESODAY: Memeoday[] = [
         { id: 1, meme: DummyConstants.DUMMY_MEMES[0], date_featured: '2018-06-29'},
-        { id: 2, meme: DummyConstants.DUMMY_MEMES[0], date_featured: '2018-06-28' },
+        { id: 2, meme: DummyConstants.DUMMY_MEMES[1], date_featured: '2018-06-30' },
     ];
 }
 

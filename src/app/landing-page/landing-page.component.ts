@@ -25,7 +25,7 @@ export class LandingPageComponent implements OnInit {
         this.thrivingMemes = memes.slice(1, 5);
         this.deadMemes = memes.slice(5, 9); });
 
-    this.memeService.getMemeOfTheDay()
+    this.memeService.getMemeoday()
       .subscribe(memeOfTheDay => this.memeOfTheDay = memeOfTheDay);
   }
 

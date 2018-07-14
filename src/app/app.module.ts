@@ -15,6 +15,7 @@ import { MemeSearchComponent } from './meme-search/meme-search.component';
 import { MemeFilterPipe } from './memes/memes.pipe';
 import { TagSearchComponent } from './tag-search/tag-search.component';
 import { HubSearchComponent } from './hub-search/hub-search.component';
+import { MemeodaySearchComponent } from './memeoday-search/memeoday-search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HubSearchComponent } from './hub-search/hub-search.component';
     MemeSearchComponent,
     MemeFilterPipe,
     TagSearchComponent,
-    HubSearchComponent
+    HubSearchComponent,
+    MemeodaySearchComponent
   ],
   imports: [
     FormsModule,

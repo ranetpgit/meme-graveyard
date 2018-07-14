@@ -28,7 +28,9 @@ export class MemesComponent implements OnInit {
   filteredTags: Tag[];
   checkedTags: Tag[] = [];
 
-  memesOfTheDay: Memeoday[]; // TODO
+  memesoday: Memeoday[]; // TODO
+  filteredMemesoday: Meme[];
+  showMemesoday = false;
 
   memeFilterPipe = new MemeFilterPipe();
   private sidebar_opened = true;
@@ -58,7 +60,7 @@ export class MemesComponent implements OnInit {
   }
 
   filterMemes(): void {
-    this.filteredMemes = this.memeFilterPipe.transform(this.memes, this.checkedHubs, this.checkedTags);
+    this.filteredMemes = this.memeFilterPipe.transform(this.memes, this.filteredMemesoday, this.checkedHubs, this.checkedTags, this.showMemesoday);
   }
 
   getMemes(): void {
@@ -66,8 +68,10 @@ export class MemesComponent implements OnInit {
     this.filteredMemes = this.memes;
   }
 
-  getMemesOfTheDay(): void {
-    this.memeService.getMemesOfTheDay().subscribe(memesOfTheDay => this.memesOfTheDay = memesOfTheDay);
+  getMemesoday(): void {
+    // get Meme[] from Memeoday[]
+    this.memeService.getMemesoday().subscribe(memesoday => this.memesoday = memesoday);
+    this.filteredMemesoday = this.memesoday.map(function (i) { return i.meme; });
   }
 
   getHubs(): void {
@@ -84,6 +88,10 @@ export class MemesComponent implements OnInit {
     this.filteredMemes = event;
   }
 
+  receiveMemeodaySearch(event) {
+    this.filteredMemesoday = event.map(function (i) { return i.meme; });
+  }
+
   receiveTagSearch(event) {
     this.filteredTags = event;
   }
@@ -94,7 +102,7 @@ export class MemesComponent implements OnInit {
 
   ngOnInit() {
     this.getMemes();
-    this.getMemesOfTheDay();
+    this.getMemesoday();
     this.getHubs();
     this.getTags();
   }

@@ -7,7 +7,11 @@
       <hr>
       <!-- Search form -->
       <div class="">
-        <app-meme-search [memes]="memes" (searchEvent)="receiveMemeSearch($event)"></app-meme-search>
+        <!-- <app-meme-search *ngIf="!showMemesOfTheDay; else searchMemesOfTheDay" [memes]="memes" (searchEvent)="receiveMemeSearch($event)"></app-meme-search> -->
+        <!-- <ng-template #searchMemesOfTheDay><app-meme-search [memes]="memesOfTheDay" (searchEvent)="receiveMemeSearch($event)"></app-meme-search></ng-template> -->
+        <app-meme-search *ngIf="!showMemesOfTheDay" [memes]="memes" (searchEvent)="receiveMemeSearch($event)"></app-meme-search>
+        <app-memeoday-search *ngIf="showMemesOfTheDay" [memesoday]="memesoday" (searchEvent)="receiveMemeodaySearch($event)"></app-memeoday-search>
+
         <!-- <input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"> -->
       </div>
 
@@ -29,6 +33,20 @@
                       <li *ngFor="let tag of filteredTags"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleTag(tag)" class="sidebarCheckbox"/> {{tag.name}} </label></li>
                       </ul>
                 </ng-template>
+          </ngb-panel>
+          <ngb-panel title="Other">
+              <ng-template ngbPanelContent>
+                  <ul>
+                      <!-- <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li> -->
+                      <!-- <li><app-hub-search [hubs]="hubs" (searchEvent)="receiveHubSearch($event)"></app-hub-search></li> -->
+
+                      <!-- <li *ngFor="let hub of filteredHubs"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleHub(hub)" class="sidebarCheckbox"/> {{hub.name}} </label></li> -->
+                      <!-- <li><label class="sidebarCheckbox"><input type="checkbox" ng-model="check" (change)="toggleMemesOfTheDay(check)" class="sidebarCheckbox"/> Memes of the day </label></li> -->
+                      <li><label class="sidebarCheckbox">
+                        <input type="checkbox" name="showMemesOfTheDay" [(ngModel)]="showMemesOfTheDay" (change)="filterMemes()" class="sidebarCheckbox"/> Memes of the day
+                      </label></li>
+                    </ul>
+              </ng-template>
           </ngb-panel>
         </ngb-accordion>
     </div>
@@ -59,7 +77,7 @@
           </select>
         </div>
       </div>
-      <div class="row memeRow" *ngFor="let meme of (filteredMemes | memeFilter: checkedHubs : checkedTags)">
+      <div class="row memeRow" *ngFor="let meme of (filteredMemes | memeFilter:  filteredMemesoday : checkedHubs : checkedTags : showMemesOfTheDay)">
         <div class="col-sm-1 voteCol">
           <div class="midcol unvoted">
             <!-- <button type="button" class=""> -->
