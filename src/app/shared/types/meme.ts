@@ -13,6 +13,8 @@ export class Meme extends DataObj {
     creator: UserAccount;
     date_created: string;
     hub: Hub;
+    upvotes: number;
+    downvotes: number;
 
     public static createEmpty(): Meme {
         let result = Meme.new();

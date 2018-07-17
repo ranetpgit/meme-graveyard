@@ -79,11 +79,11 @@
       </div>
       <div class="row memeRow" *ngFor="let meme of (filteredMemes | memeFilter:  filteredMemesoday : checkedHubs : checkedTags : showMemesOfTheDay)">
         <div class="col-sm-1 voteCol">
-          <div class="midcol unvoted">
+          <div class="midcol unvoted text-center">
             <!-- <button type="button" class=""> -->
                 <i class="arrow up"></i>
             <!-- </button> -->
-            <div class="score">SCORE</div>
+            <div class="score">{{meme.upvotes - meme.downvotes}}</div>
             <!-- <button type="button" class=""> -->
                 <i class="arrow down"></i>
             <!-- </button> -->
