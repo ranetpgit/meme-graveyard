@@ -7,19 +7,14 @@
       <hr>
       <!-- Search form -->
       <div class="">
-        <!-- <app-meme-search *ngIf="!showMemesOfTheDay; else searchMemesOfTheDay" [memes]="memes" (searchEvent)="receiveMemeSearch($event)"></app-meme-search> -->
-        <!-- <ng-template #searchMemesOfTheDay><app-meme-search [memes]="memesOfTheDay" (searchEvent)="receiveMemeSearch($event)"></app-meme-search></ng-template> -->
         <app-meme-search *ngIf="!showMemesOfTheDay" [memes]="memes" (searchEvent)="receiveMemeSearch($event)"></app-meme-search>
         <app-memeoday-search *ngIf="showMemesOfTheDay" [memesoday]="memesoday" (searchEvent)="receiveMemeodaySearch($event)"></app-memeoday-search>
-
-        <!-- <input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"> -->
       </div>
-
+      <!-- Accordion options -->
       <ngb-accordion #acc="ngbAccordion">
           <ngb-panel title="Hubs">
               <ng-template ngbPanelContent>
                   <ul>
-                      <!-- <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li> -->
                       <li><app-hub-search [hubs]="hubs" (searchEvent)="receiveHubSearch($event)"></app-hub-search></li>
                       <li *ngFor="let hub of filteredHubs"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleHub(hub)" class="sidebarCheckbox"/> {{hub.name}} </label></li>
                     </ul>
@@ -28,7 +23,6 @@
           <ngb-panel title="Tags">
               <ng-template ngbPanelContent>
                   <ul>
-                      <!-- <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li> -->
                       <li><app-tag-search [tags]="tags" (searchEvent)="receiveTagSearch($event)"></app-tag-search></li>
                       <li *ngFor="let tag of filteredTags"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleTag(tag)" class="sidebarCheckbox"/> {{tag.name}} </label></li>
                       </ul>
@@ -37,11 +31,6 @@
           <ngb-panel title="Other">
               <ng-template ngbPanelContent>
                   <ul>
-                      <!-- <li><input class="form-control sidebarSearch" type="text" placeholder="Search" aria-label="Search"></li> -->
-                      <!-- <li><app-hub-search [hubs]="hubs" (searchEvent)="receiveHubSearch($event)"></app-hub-search></li> -->
-
-                      <!-- <li *ngFor="let hub of filteredHubs"><label class="sidebarCheckbox"><input type="checkbox" (change)="toggleHub(hub)" class="sidebarCheckbox"/> {{hub.name}} </label></li> -->
-                      <!-- <li><label class="sidebarCheckbox"><input type="checkbox" ng-model="check" (change)="toggleMemesOfTheDay(check)" class="sidebarCheckbox"/> Memes of the day </label></li> -->
                       <li><label class="sidebarCheckbox">
                         <input type="checkbox" name="showMemesOfTheDay" [(ngModel)]="showMemesOfTheDay" (change)="filterMemes()" class="sidebarCheckbox"/> Memes of the day
                       </label></li>
@@ -57,27 +46,29 @@
       <button (click)="_toggleSidebar()" class="{{sidebar_opened ? 'arrow right sidebarToggle' : 'arrow left sidebarToggle'}}"></button>
     </div>
     <div class="container">
+      <!-- Time selector -->
       <div class="row">
         <div class="col-md-2">
-          <select class="selectpicker pastPicker">
-            <option class="dropdown-item">Past 24 hours</option>
-            <option class="dropdown-item">Past week</option>
-            <option class="dropdown-item">Past month</option>
-            <option class="dropdown-item">Past 3 months </option>
-            <option class="dropdown-item">Past 6 months </option>
-            <option class="dropdown-item">Past year</option>
-            <option class="dropdown-item">All time</option>
+          <select class="selectpicker pastPicker" (change)="selectTime($event)">
+            <option class="dropdown-item" [value]="'day'">Past 24 hours</option>
+            <option class="dropdown-item" [value]="'week'">Past week</option>
+            <option class="dropdown-item" [value]="'month'">Past month</option>
+            <option class="dropdown-item" [value]="'3months'">Past 3 months </option>
+            <option class="dropdown-item" [value]="'6months'">Past 6 months </option>
+            <option class="dropdown-item" [value]="'year'">Past year</option>
+            <option class="dropdown-item" selected [value]="'all'">All time</option>
           </select>
         </div>
+        <!-- Trend selector -->
         <div class="col-md-2">
-          <select class="selectpicker pastPicker">
-            <option class="dropdown-item"> Hot </option>
-            <option class="dropdown-item"> New </option>
-            <option class="dropdown-item"> Top </option>
+          <select class="selectpicker trendPicker" (change)="selectTrend($event)">
+            <option class="dropdown-item" selected [value]="'new'"> New </option>
+            <!-- <option class="dropdown-item" [value]="'hot'"> Hot </option> -->
+            <option class="dropdown-item" [value]="'top'"> Top </option>
           </select>
         </div>
       </div>
-      <div class="row memeRow" *ngFor="let meme of (filteredMemes | memeFilter:  filteredMemesoday : checkedHubs : checkedTags : showMemesOfTheDay)">
+      <div class="row memeRow" *ngFor="let meme of (filteredMemes | memeFilter:  filteredMemesoday : checkedHubs : checkedTags : showMemesOfTheDay : selectedTrend : selectedTime)">
         <div class="col-sm-1 voteCol">
           <div class="midcol unvoted text-center">
             <!-- <button type="button" class=""> -->
@@ -109,7 +100,7 @@
                 <span>
                   <a href="" class="detailLink"> {{meme.creator.accountName}} </a>
                 </span>
-                <span>at {{meme.date_created}} to </span>
+                <span>at {{meme.date_submitted}} to </span>
                 <a href="" class="detailLink"> {{meme.hub.name}}</a>
               </p>
             </li>

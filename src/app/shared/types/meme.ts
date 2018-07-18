@@ -11,7 +11,7 @@ export class Meme extends DataObj {
     tags: Tag[];
     image: string;
     creator: UserAccount;
-    date_created: string;
+    date_submitted: string;
     hub: Hub;
     upvotes: number;
     downvotes: number;

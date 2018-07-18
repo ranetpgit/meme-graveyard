@@ -10,7 +10,7 @@ export class Hub extends DataObj {
     num_posts: number;
     creator: UserAccount;
     admins: UserAccount[];
-    date_created: string;
+    date_submitted: string;
 
     public static createEmpty(): Hub {
         let result = Hub.new();

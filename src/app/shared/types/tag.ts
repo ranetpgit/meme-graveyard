@@ -4,7 +4,7 @@ import { UserAccount } from './user-account';
 export class Tag extends DataObj {
     name: string;
     creator: UserAccount;
-    date_created: string;
+    date_submitted: string;
     num_posts: number;
 
     public static createEmpty(): Tag {

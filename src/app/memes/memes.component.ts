@@ -10,6 +10,7 @@ import { UserService } from '../core/user.service';
 import { AppConstants } from '../app.constants';
 import { MemeFilterPipe } from './memes.pipe';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-memes',
@@ -31,6 +32,9 @@ export class MemesComponent implements OnInit {
   memesoday: Memeoday[]; // TODO
   filteredMemesoday: Meme[];
   showMemesoday = false;
+
+  selectedTrend = 'new';
+  selectedTime = 'all';
 
   memeFilterPipe = new MemeFilterPipe();
   private sidebar_opened = true;
@@ -60,12 +64,13 @@ export class MemesComponent implements OnInit {
   }
 
   filterMemes(): void {
-    this.filteredMemes = this.memeFilterPipe.transform(this.memes, this.filteredMemesoday, this.checkedHubs, this.checkedTags, this.showMemesoday);
+    this.filteredMemes = this.memeFilterPipe.transform(this.memes, this.filteredMemesoday, this.checkedHubs, this.checkedTags, this.showMemesoday, this.selectedTrend, this.selectedTime);
   }
 
   getMemes(): void {
     this.memeService.getMemes().subscribe(memes => this.memes = memes);
     this.filteredMemes = this.memes;
+    debugger;
   }
 
   getMemesoday(): void {
@@ -98,6 +103,16 @@ export class MemesComponent implements OnInit {
 
   receiveHubSearch(event) {
     this.filteredHubs = event;
+  }
+
+  selectTime(event) {
+    this.selectedTime = event.target.value;
+    this.filterMemes();
+  }
+
+  selectTrend(event) {
+    this.selectedTrend = event.target.value;
+    this.filterMemes();
   }
 
   ngOnInit() {
