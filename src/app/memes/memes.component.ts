@@ -29,7 +29,7 @@ export class MemesComponent implements OnInit {
   filteredTags: Tag[];
   checkedTags: Tag[] = [];
 
-  memesoday: Memeoday[]; // TODO
+  memesoday: Memeoday[];
   filteredMemesoday: Meme[];
   showMemesoday = false;
 
@@ -70,7 +70,6 @@ export class MemesComponent implements OnInit {
   getMemes(): void {
     this.memeService.getMemes().subscribe(memes => this.memes = memes);
     this.filteredMemes = this.memes;
-    debugger;
   }
 
   getMemesoday(): void {
@@ -113,6 +112,10 @@ export class MemesComponent implements OnInit {
   selectTrend(event) {
     this.selectedTrend = event.target.value;
     this.filterMemes();
+  }
+
+  howLongAgo(date: string): string {
+    return moment(date).fromNow();
   }
 
   ngOnInit() {

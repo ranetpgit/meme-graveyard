@@ -3,6 +3,7 @@ import { union } from 'lodash';
 import { Meme } from '../shared/types/meme';
 import { Hub } from '../shared/types/hub';
 import { Tag } from '../shared/types/tag';
+import * as moment from 'moment';
 
 @Pipe({ name: 'memeFilter' })
 export class MemeFilterPipe implements PipeTransform {
@@ -38,58 +39,57 @@ export class MemeFilterPipe implements PipeTransform {
 
     sortByTrend(filteredMemes, selectedTrend) {
         switch (selectedTrend) {
-          case 'new': {
-            filteredMemes.sort(function (a, b) { return +new Date(b.date_submitted) - +new Date(a.date_submitted); });
-            break;
-          }
-          case 'top': {
-            filteredMemes.sort(function (a, b) { return (b.upvotes - b.downvotes) - (a.upvotes - a.downvotes); });
-            break;
-          }
+            case 'new': {
+                filteredMemes.sort(function (a, b) { return +moment(b.date_submitted) - +moment(a.date_submitted); });
+                break;
+            }
+            case 'top': {
+                filteredMemes.sort(function (a, b) { return (b.upvotes - b.downvotes) - (a.upvotes - a.downvotes); });
+                break;
+            }
         }
         return filteredMemes;
-      }
+    }
 
-      filterByTime(filteredMemes, selectedTime) {
-        const currentDate = new Date();
-        let startingDate = new Date();
-        // switch for option values, filter each case besides all
+    filterByTime(filteredMemes, selectedTime) {
+        const currentDate = moment();
+        let startingDate = moment();
         switch (selectedTime) {
-          case 'day': {
-            startingDate.setDate(currentDate.getDate() - 1);
-            filteredMemes = filteredMemes.filter(meme => new Date(meme.date_submitted) > startingDate && new Date(meme.date_submitted) < currentDate);
-            break;
-          }
-          case 'week': {
-            startingDate.setDate(currentDate.getDate() - 7);
-            filteredMemes = filteredMemes.filter(meme => new Date(meme.date_submitted) > startingDate && new Date(meme.date_submitted) < currentDate);
-            break;
-          }
-          case 'month': {
-            startingDate.setMonth(currentDate.getMonth() - 1);
-            filteredMemes = filteredMemes.filter(meme => new Date(meme.date_submitted) > startingDate && new Date(meme.date_submitted) < currentDate);
-            break;
-          }
-          case '3months': {
-            startingDate.setMonth(currentDate.getMonth() - 3);
-            filteredMemes = filteredMemes.filter(meme => new Date(meme.date_submitted) > startingDate && new Date(meme.date_submitted) < currentDate);
-            break;
-          }
-          case '6months': {
-            startingDate.setMonth(currentDate.getMonth() - 6);
-            filteredMemes = filteredMemes.filter(meme => new Date(meme.date_submitted) > startingDate && new Date(meme.date_submitted) < currentDate);
-            break;
-          }
-          case 'year': {
-            startingDate.setFullYear(currentDate.getFullYear() - 1);
-            filteredMemes = filteredMemes.filter(meme => new Date(meme.date_submitted) > startingDate && new Date(meme.date_submitted) < currentDate);
-            break;
-          }
-          case 'all': {
-            // statements;
-            break;
-          }
+            case 'day': {
+                startingDate.subtract(1, 'day');
+                filteredMemes = filteredMemes.filter(meme => moment(meme.date_submitted).isBetween(startingDate, currentDate));
+                break;
+            }
+            case 'week': {
+                startingDate.subtract(1, 'week');
+                filteredMemes = filteredMemes.filter(meme => moment(meme.date_submitted).isBetween(startingDate, currentDate));
+                break;
+            }
+            case 'month': {
+                startingDate.subtract(1, 'month');
+                filteredMemes = filteredMemes.filter(meme => moment(meme.date_submitted).isBetween(startingDate, currentDate));
+                break;
+            }
+            case '3months': {
+                startingDate.subtract(3, 'month');
+                filteredMemes = filteredMemes.filter(meme => moment(meme.date_submitted).isBetween(startingDate, currentDate));
+                break;
+            }
+            case '6months': {
+                startingDate.subtract(6, 'month');
+                filteredMemes = filteredMemes.filter(meme => moment(meme.date_submitted).isBetween(startingDate, currentDate));
+                break;
+            }
+            case 'year': {
+                startingDate.subtract(1, 'year');
+                filteredMemes = filteredMemes.filter(meme => moment(meme.date_submitted).isBetween(startingDate, currentDate));
+                break;
+            }
+            case 'all': {
+                // statements;
+                break;
+            }
         }
         return filteredMemes;
-      }
+    }
 }
