@@ -2,8 +2,8 @@
   <!-- Sidebar -->
   <ng-sidebar mode="push" [(opened)]="sidebar_opened">
     <div>
-      <h4 closeSidebar class="sidebarX">
-        <span>&#10799;</span> Filters </h4>
+      <h5 closeSidebar class="sidebarX">
+        <span>&#10799;</span> Filters </h5>
       <hr>
       <!-- Search form -->
       <div class="">
@@ -63,6 +63,7 @@
         <div class="col-md-2">
           <select class="selectpicker trendPicker" (change)="selectTrend($event)">
             <option class="dropdown-item" selected [value]="'new'"> New </option>
+            <option class="dropdown-item" [value]="'old'"> Old </option>
             <!-- <option class="dropdown-item" [value]="'hot'"> Hot </option> -->
             <option class="dropdown-item" [value]="'top'"> Top </option>
           </select>

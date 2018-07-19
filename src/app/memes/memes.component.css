@@ -37,7 +37,7 @@ p {
 >>>.card-header > h5 > button {
     color: #212529;
     font-weight: 500;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 >>>.card-header > h5 > button:hover {
     color: #212529;
@@ -53,6 +53,9 @@ p {
     background-color: #f9f9f9;
     padding: 1em;
     width: 17em;
+    font-size: 0.8em;
+    font-weight: 450;
+    color: #444444;
 }
 
 .sidebarX {

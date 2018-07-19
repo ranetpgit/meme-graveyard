@@ -11,6 +11,8 @@ export class MemeFilterPipe implements PipeTransform {
     transform(allMemes: Meme[], memesOfTheDay: Meme[], filterHubs: Hub[], filterTags: Tag[], showMemesOfTheDay: boolean, selectedTrend: string, selectedTime: string) {
         let filteredMemes = allMemes;
         if (showMemesOfTheDay) {
+            memesOfTheDay = this.filterByTime(memesOfTheDay, selectedTime);
+            memesOfTheDay = this.sortByTrend(memesOfTheDay, selectedTrend);
             return this.filter(memesOfTheDay, filterHubs, filterTags);
         } else {
             filteredMemes = this.filterByTime(filteredMemes, selectedTime);
@@ -41,6 +43,10 @@ export class MemeFilterPipe implements PipeTransform {
         switch (selectedTrend) {
             case 'new': {
                 filteredMemes.sort(function (a, b) { return +moment(b.date_submitted) - +moment(a.date_submitted); });
+                break;
+            }
+            case 'old': {
+                filteredMemes.sort(function (a, b) { return +moment(a.date_submitted) - +moment(b.date_submitted); });
                 break;
             }
             case 'top': {
